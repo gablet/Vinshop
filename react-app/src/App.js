@@ -13,16 +13,11 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8090/dbtest")
+      .get("http://localhost:8080")
       .then(response => {
-
+        alert(response.data);
         // create an array of contacts only with relevant data
-        const newWine = response.data.map(c => {
-          return {
-            id: c.id,
-            name: c.name
-          };
-        });
+        const newWine = response.data;
 
         // create a new "State" object without mutating 
         // the original State object. 
@@ -35,6 +30,7 @@ class App extends Component {
       })
       .catch(error => console.log(error));
   }
+
   render() {
     return (
       <div className="App">

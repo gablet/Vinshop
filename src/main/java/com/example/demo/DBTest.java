@@ -1,4 +1,4 @@
-package com.example.demo;
+/**package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,4 +33,5 @@ public class DBTest {
         }
 
     }
+ */
 
