@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 @Controller
-public class Repository {
+public class DBTest {
 
         @Autowired
         DataSource dataSource;
@@ -22,12 +22,15 @@ public class Repository {
         public String testDb() throws SQLException {
             try (Connection conn = dataSource.getConnection();
                  Statement stmt = conn.createStatement();
-                 ResultSet rs = stmt.executeQuery("SELECT 1+1")) {
+//                 ResultSet rs = stmt.executeQuery("SELECT 1+1")) {
+                 ResultSet rs = stmt.executeQuery("SELECT * FROM dbo.TestTable")) {
                 rs.next();
-                int two = rs.getInt(1);
-                return "Database connectivity seems " + (two == 2 ? "OK." : "weird!");
+//                int two = rs.getInt(1);
+                String test = rs.getString("Name");
+//                return "Database connectivity seems " + (two == 2 ? "OK." : "weird!");
+            return test;
             }
         }
 
     }
-    
+
