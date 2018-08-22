@@ -42,39 +42,40 @@ class App extends Component {
     return (
       <div className="App">
         <div className="wrapper">
-          <div id="left" class="column">
-            <div class="top-left">
+          <div id="left" className="column">
+            <div className="top-left">
               <div className="set-height" />
               <img src={logo} className="App-logo" alt="logo" />
             </div>
-            <div class="bottom">
+            <div className="bottom">
               <a href="#white">Vitt</a> <br/>
               <a href="#red">Rött</a>   <br/>
               <a href="#sparkling">Mousserande</a>  <br/>
             </div>
           </div>
 
-          <div id="middle" class="column">
-            <div class="top-middle">
+          <div id="middle" className="column">
+            <div className="top-middle">
               {" "}
               <div className="set-height" />
             </div>
 
-            <div class="bottom">
+            <div className="bottom">
               <ProductList
                 products={this.state.products}
                 handleAddToCart={this.handleAddToCart}
               />
             </div>
           </div>
-          <div id="right" class="column">
-            <div class="top-right">
+          <div id="right" className="column">
+            <div className="top-right">
             
 
               <div className="set-height">
               <Navigation cart={this.state.cart} /></div>
+              <Popup customer={this.state.customer}/>
             </div>
-            <div class="bottom">
+            <div className="bottom">
             <div className="set-width" />
 
             </div>
