@@ -1,7 +1,7 @@
 export default [
     {
         id: 1,
-        title: 'Comtes de Champagne Grands CrusAngular Router',
+        name: 'Comtes de Champagne Grands CrusAngular Router',
         author: 'Blanc de Blancs',
         description: `Komplex, mycket frisk smak med inslag av gula äpplen, mineral, vit choklad, apelsin, nötter och honung. Serveras vid 8-10°C som aperitif eller till rätter av fisk, fågel eller skaldjur.`,
         price: 1200,
@@ -11,7 +11,7 @@ export default [
     },
     {
         id: 2,
-        title: 'Leth',
+        name: 'Leth',
         author: 'Duett Riesling Grüner Veltliner Trocken',
         description: `Fruktig, mycket frisk smak med inslag av päron, honungsmelon, ananas, gröna äpplen och citrus. Serveras vid cirka 8°C till rätter av fisk och skaldjur.`,
         price: 85,
@@ -21,7 +21,7 @@ export default [
     },
     {
         id: 3,
-        title: 'Craggy Range',
+        name: 'Craggy Range',
         author: 'Te Muna Pinot Noir',
         description: `Kryddig, nyanserad smak med fatkaraktär, inslag av körsbär, nougat, ingefära, mogna jordgubbar, kanel, skogshallon och sandelträ. Serveras vid cirka 16°C till rätter av ljust kött eller till lättare rätter av lammkött.`,
         price: 249,

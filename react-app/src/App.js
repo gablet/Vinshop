@@ -25,20 +25,17 @@ class App extends Component {
     product.inStock > 0 && this.setState({ cart: [...this.state.cart, product] });
     this.state.products.forEach(e => {if (e===product && e.inStock>0) e.inStock--})}
   
-  state = {
-    wine: []
-  };
 
   componentDidMount() {
     axios
-      .get("http://localhost:8080")
+      .get("http://localhost:8090")
       .then(response => {
         // create an array of contacts only with relevant data
         const newWine = response.data;
 
         // create a new "State" object without mutating
         // the original State object.
-        const newState = Object.assign({}, this.state, { wine: newWine });
+        const newState = Object.assign({}, this.state, { products: newWine });
 
         // store the new state object in the component's state
         this.setState(newState);
