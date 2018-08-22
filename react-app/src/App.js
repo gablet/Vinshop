@@ -5,7 +5,7 @@ import axios from "axios";
 
 import Navigation from "./Components/Navigation";
 import ProductList from "./Components/ProductList";
-import ExampleApp from "./Components/ExampleApp";
+import Popup from "./Components/ExampleApp";
 
 
 
