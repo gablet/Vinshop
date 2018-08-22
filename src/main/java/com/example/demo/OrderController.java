@@ -1,14 +1,31 @@
 package com.example.demo;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/createorder")
 public class OrderController {
+
+    @Autowired
+    private OrderRepository repository;
+
+
+    @PostMapping (value="/createorder", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void createOrder(@RequestBody Orders order) {
+
+
+
+
+
+        repository.save(order);
+
+
+
+        System.out.println(order.getArtikelnr());
+    }
+
+
 
 
 
