@@ -16,7 +16,7 @@ public class ProductController {
 
     @GetMapping("/")
     public Collection<Product> listProducts() {
-        List<Product> asdf = new ArrayList<>();
-        return asdf = repository.findAll();
+        List<Product> products = new ArrayList<>();
+        return products = repository.findAll();
     }
 }
