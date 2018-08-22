@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import axios from "axios";
+
 import Navigation from "./Components/Navigation";
 import ProductList from "./Components/ProductList";
 import Popup from "./Components/Popup";
+
 
 
 class App extends Component {
@@ -41,22 +43,47 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Vinshoppen</h1>
-          <Navigation cart={this.state.cart} />
-          <Popup/>
-        </header>
-        <div id="wrapper">
-        <div className="sidebar">
 
-        </div>
-        
-        <div className="App-main">
-          <ProductList
-            products={this.state.products}
-            handleAddToCart={this.handleAddToCart}
-          />
+        <div className="wrapper">
+          <div id="left" class="column">
+            <div class="top-left">
+              <div className="set-height" />
+              <img src={logo} className="App-logo" alt="logo" />
+            </div>
+            <div class="bottom">
+              <a href="#white">Vitt</a> <br/>
+              <a href="#red">Rött</a>   <br/>
+              <a href="#sparkling">Mousserande</a>  <br/>
+            </div>
+          </div>
+
+          <div id="middle" class="column">
+            <div class="top-middle">
+              {" "}
+              <div className="set-height" />
+            </div>
+
+            <div class="bottom">
+              <ProductList
+                products={this.state.products}
+                handleAddToCart={this.handleAddToCart}
+              />
+            </div>
+          </div>
+          <div id="right" class="column">
+            <div class="top-right">
+            
+
+              <div className="set-height">
+              <Navigation cart={this.state.cart} /></div>
+            </div>
+            <div class="bottom">
+            <div className="set-width" />
+
+            </div>
+          </div>
+
+
         </div>
         </div>
       </div>
