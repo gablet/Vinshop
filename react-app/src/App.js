@@ -2,11 +2,9 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import axios from "axios";
-
 import Navigation from "./Components/Navigation";
 import ProductList from "./Components/ProductList";
-import Popup from "./Components/ExampleApp";
-
+import Popup from "./Components/Popup";
 
 
 class App extends Component {
@@ -14,7 +12,8 @@ class App extends Component {
     super(props);
     this.state = {
       products: [],
-      cart: []
+      cart: [],
+      customer: []
     };
     axios
       .get("http://localhost:8090")
@@ -35,8 +34,8 @@ class App extends Component {
 
   handleAddToCart(product) {
     const cartItem = this.state.cart.find(x => x.id === product.id);
-    product.prisinklmoms > 0 && this.setState({ cart: [...this.state.cart, product] });
-    this.state.products.forEach(e => {if (e===product && e.prisinklmoms>0) e.prisinklmoms--})
+    product.lagersaldo > 0 && this.setState({ cart: [...this.state.cart, product] });
+    this.state.products.forEach(e => {if (e===product && e.lagersaldo>0) e.lagersaldo--})
   }
   
   render() {
@@ -83,7 +82,6 @@ class App extends Component {
 
         </div>
         </div>
-      </div>
     );
   }
 }

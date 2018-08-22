@@ -30,7 +30,7 @@ class Product extends Component {
             className="Product__stock"
             style={{ color: product.id >= 5 ? "#417505" : "#CE0814" }}
           >
-            {product.prisinklmoms} i lager.
+            {product.lagersaldo} i lager.
           </div>
         </div>
       </div>
