@@ -18,6 +18,7 @@ public class ProductController {
         this.repository = repository;
     }
 
+
     @GetMapping(value="/", produces = MediaType.APPLICATION_JSON_VALUE)
     public Collection<Product> listProducts(HttpServletResponse response) {
         response.setHeader("Access-Control-Allow-Origin", "*");

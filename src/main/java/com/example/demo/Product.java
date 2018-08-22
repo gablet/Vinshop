@@ -1,8 +1,5 @@
 package com.example.demo;
 
-
-
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -29,12 +26,14 @@ public class Product {
     private String Leverantor;
     private int Argang;
     private double Alkoholhalt;
+    private String produktbild;
+    private int lagersaldo;
 
     public Product() {
 
     }
 
-    public Product(int artikelnr, int nr, String namn, String namn2, double prisinklmoms, double volymiml, double prisperliter, String varugrupp, String flaska, String ursprung, String ursprungsland, String producent, String leverantor, int argang, double alkoholhalt) {
+    public Product(int artikelnr, int nr, String namn, String namn2, double prisinklmoms, double volymiml, double prisperliter, String varugrupp, String flaska, String ursprung, String ursprungsland, String producent, String leverantor, int argang, double alkoholhalt, String produktbild, int lagersaldo) {
         Artikelnr = artikelnr;
         Nr = nr;
         Namn = namn;
@@ -50,6 +49,8 @@ public class Product {
         Leverantor = leverantor;
         Argang = argang;
         Alkoholhalt = alkoholhalt;
+        this.produktbild = produktbild;
+        this.lagersaldo = lagersaldo;
     }
 
     public int getArtikelnr() {
@@ -170,6 +171,22 @@ public class Product {
 
     public void setAlkoholhalt(double alkoholhalt) {
         Alkoholhalt = alkoholhalt;
+    }
+
+    public String getProduktbild() {
+        return produktbild;
+    }
+
+    public void setProduktbild(String produktbild) {
+        this.produktbild = produktbild;
+    }
+
+    public int getLagersaldo() {
+        return lagersaldo;
+    }
+
+    public void setLagersaldo(int lagersaldo) {
+        this.lagersaldo = lagersaldo;
     }
 }
 
