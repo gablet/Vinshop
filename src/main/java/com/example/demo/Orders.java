@@ -17,7 +17,7 @@ public class Orders {
     private int orderid;
 
 
-    //private int customerid;
+    private int customerid;
     private int artikelnr;
     private int amount;
     private double sumprice;
@@ -27,8 +27,8 @@ public class Orders {
 
     }
 
-    public Orders(int artikelnr, int amount, double sumprice, String paymentmethod) {
-        //this.customerid = customerid;
+    public Orders(int customerid, int artikelnr, int amount, double sumprice, String paymentmethod) {
+        this.customerid = customerid;
         this.artikelnr = artikelnr;
         this.amount = amount;
         this.sumprice = sumprice;
@@ -43,13 +43,13 @@ public class Orders {
         this.orderid = orderid;
     }
 
-//    public int getCustomerid() {
-//        return customerid;
-//    }
-//
-//    public void setCustomerid(int customerid) {
-//        this.customerid = customerid;
-//    }
+    public int getCustomerid() {
+        return customerid;
+    }
+
+    public void setCustomerid(int customerid) {
+        this.customerid = customerid;
+    }
 
     public int getArtikelnr() {
         return artikelnr;
