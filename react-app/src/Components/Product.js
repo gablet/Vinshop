@@ -1,49 +1,36 @@
 import React, { Component } from "react";
+import './Product.css';
+import bottle from './bottle.jpg';
 
 class Product extends Component {
   render() {
     const product = this.props.product;
     return (
       <div className="Product">
-        <div
-          className="Product__img"
-          style={{
-            backgroundImage: `add comment here`, //`url($\{product.image\})`
-            width: "300px",
-            height: "100px",
-            backgroundSize: "contain",  
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "top left",
-            display: "inline"
-          }}
-        >
-          <img
-            style={{
-              maxWidth: "20%",
-              height: "auto",
-              width: "auto9",
-              align: "center"
-            }}
-            src={product.image}
+        <div className="Product__img">
+          <img className="images"
+            src={bottle}
             alt="Product Item"
           />
         </div>
-        <div className="Product__details" style={{ float: "right" }}>
-          <div className="Product__cat">{product.category}</div>
-          <h4>{product.title}</h4>
-          <h5>{product.author}</h5>
+        <div className="Product__details">
+          <div className="Product__cat">{product.varugrupp}</div>
+          <h4>{product.namn}</h4>
+          <h4>{product.namn2}</h4>
+          <p>{product.artikelnr}</p>
+          <p>{product.ursprung}, {product.ursprungsland}</p>
           <div className="Product__price-cart">
-            <p>{product.price} SEK</p>
+            <p>{product.prisinklmoms} SEK</p>
             <button onClick={this.props.handleClick.bind(this, product)}>
               <span className="fa fa-cart-plus" /> Köp
             </button>
           </div>
-          <div className="BootItem__description">{product.description}</div>
+          <div className="BootItem__description">{product.name}</div>
           <div
             className="Product__stock"
-            style={{ color: product.inStock >= 5 ? "#417505" : "#CE0814" }}
+            style={{ color: product.id >= 5 ? "#417505" : "#CE0814" }}
           >
-            {product.inStock} i lager.
+            {product.prisinklmoms} i lager.
           </div>
         </div>
       </div>
