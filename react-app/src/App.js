@@ -15,7 +15,6 @@ class App extends Component {
     axios
       .get("http://localhost:8080")
       .then(response => {
-        alert(response.data);
         // create an array of contacts only with relevant data
         const newWine = response.data;
 
