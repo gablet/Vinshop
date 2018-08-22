@@ -6,42 +6,58 @@ package com.example.demo;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Table(name ="testtable")
 @Entity
 public class Product {
 
     @Id
     @GeneratedValue
-    private Long id;
-    private String name;
+    private Long ID;
 
-    public Product() {}
+    private String Name;
+    private String Country;
 
-    public Product(String name) {
-        this.name = name;
+    public Product(String name, String country) {
+        Name = name;
+        Country = country;
     }
 
-    public Long getId() {
-        return id;
+    public Product () {
+
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        Name = name;
+    }
+
+    public String getCountry() {
+        return Country;
+    }
+
+    public void setCountry(String country) {
+        Country = country;
     }
 
     @Override
     public String toString() {
         return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "ID=" + ID +
+                ", Name='" + Name + '\'' +
+                ", Country='" + Country + '\'' +
                 '}';
     }
 }
