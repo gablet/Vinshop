@@ -3,3 +3,14 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+header {
+  margin-left: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+}
+
+html {
+  height: 100%;
+}
