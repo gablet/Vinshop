@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
+import shop from "./shop.svg";
 import "./App.css";
 import axios from "axios";
 import Navigation from "./Components/Navigation";
 import ProductList from "./Components/ProductList";
 import Popup from "./Components/Popup";
 import SortButton from "./Components/SortButton";
+import StickyContainer from "react";
 
 
 class App extends Component {
@@ -32,6 +34,7 @@ class App extends Component {
       .catch(error => console.log(error));
     this.handleAddToCart = this.handleAddToCart.bind(this);
     this.showMenu = this.showMenu.bind(this);
+    this.dontShowMenu = this.dontShowMenu.bind(this);
   }
 
   showMenu(event) {
@@ -83,12 +86,13 @@ class App extends Component {
     return (
       <div className="App">
         <div className="wrapper">
+        
           <div id="left" className="column">
+          
             <div className="top-left">
               <div className="set-height" />
               <img src={logo} className="App-logo" alt="logo" />
             </div>
-
             <div id="leftcolumn" className="bottom">
               <SortButton products={this.state.products} sortProductStateBy={this.sortProductStateBy}/>
 
@@ -96,11 +100,12 @@ class App extends Component {
           </div>
 
           <div id="middle" className="column">
+         
             <div className="top-middle">
               {" "}
               <div className="set-height" />
             </div>
-
+          
             <div className="bottom">
               <ProductList
                 products={this.state.products}
@@ -110,24 +115,25 @@ class App extends Component {
           </div>
 
           <div id="right" className="column">
+        
             <div className="top-right">
               <div className="set-height">
-                <button onMouseOver={this.showMenu} onMouseLeave={this.dontShowMenu}>Visa kundvagn
+                <div id="dropmenu" onMouseOver={this.showMenu} onMouseLeave={this.dontShowMenu}>
+                <img src={shop} alt="shop"/>
                 <Navigation cart={this.state.cart} />
-                </button>
+                
                 {this.state.showMenu? (
                     <div className="menu">
-                      <button> Menu item 1 </button>
-                      <button> Menu item 2 </button>
-                      <button> Menu item 3 </button>
+                      
+                      <Popup cart={this.state.cart}/>
                     </div>
                   )
                   : (null)
                   }
-        
-                <Popup cart={this.state.cart}/>
+                  </div>
               </div>
             </div>
+        
             <div className="bottom">
               <div className="set-width" />
 

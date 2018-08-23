@@ -52,12 +52,10 @@
   background-color: lightblue;
   align-items: center;
   flex: 1;
-
 }
 
 .top-middle {
   flex-shrink: 0;
-  
   display: inline-flex;
   background-color: lightblue;
 }
@@ -68,16 +66,17 @@
 }
 
 .set-height {
-height: 120px;
+  height: 120px;
+  
 }
 
 .set-width {
   width: 100px;
-  }
+  
+}
 
 .wrapper {
-  height: 100%;   
-  overflow: hidden;  /*makes the body non-scrollable (we will add scrolling to the sidebar and main content containers)*/
+  height: 100%;     /*makes the body non-scrollable (we will add scrolling to the sidebar and main content containers)*/
   margin: 0px;  /*removes default style*/
   display: flex;  /*enables flex content for its children*/
   box-sizing: border-box;
@@ -97,6 +96,22 @@ button {
   text-align: center;
   font-size: 16px;
   margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#dropmenu {
+  border-radius: 25px;
+  background-color: #00308F;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 20px;
   opacity: 0.6;
   transition: 0.3s;
   display: inline-block;
