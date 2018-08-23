@@ -6,6 +6,7 @@ class SortButton extends React.Component {
     var products = this.props.products;
     this.props.sortProductStateBy(field, products);
   }
+  
   render() {
     return (
       <div className="sort-section">

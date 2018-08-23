@@ -43,6 +43,11 @@ class App extends Component {
 
   sortProductStateBy = (field, products) => {
     // Sorting ...
+
+    console.log(products);
+    console.log(products);
+
+
     var sortedProducts = products.sort((a, b) => {
       if (a[field] > b[field]) {
         return 1;
@@ -57,8 +62,6 @@ class App extends Component {
   };
 
 
-  
-
   render() {
     return (
       <div className="App">
@@ -69,7 +72,7 @@ class App extends Component {
               <img src={logo} className="App-logo" alt="logo" />
             </div>
             <div class="bottom">
-              <SortButton products={this.state.products}/>
+              <SortButton products={this.state.products} sortProductStateBy={this.sortProductStateBy}/>
             </div>
           </div>
 
