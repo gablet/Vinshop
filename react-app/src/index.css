@@ -14,3 +14,10 @@ header {
 html {
   height: 100%;
 }
+
+#content {
+  flex: 1 1 auto;
+  overflow: auto;
+
+}
+

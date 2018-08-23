@@ -30,6 +30,9 @@ class ProductList extends Component {
         return (
             <div>
                 {this.props.products
+                    .filter(e => e.isvisible == "true")
+                    .filter(e => e.namn.toLowerCase().
+                    indexOf(this.props.search.toLowerCase()) !== -1)
                     .map(this.renderProducts)}
             </div>
         );

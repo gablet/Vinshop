@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import "./Product.css";
 
-class FilterButton extends Component {
+class FilterVarugruppButton extends Component {
    filterProducts(criteria){
         var products = this.props.products;
-        this.props.filterProductStateBy(criteria, products);
+        this.props.filterProductsByVarugrupp(criteria, products);
     }
 
     render() {
           return (
             <div className="filter-section">
-            <h1>Filtrera på:</h1>
+            <h1>Filtrera på</h1>
                 <button 
                     className="filter-button" 
                     onClick={this.filterProducts.bind(this, "Rött vin")}> 
@@ -30,4 +30,4 @@ class FilterButton extends Component {
     
           )};
     }
-    export default FilterButton;
+    export default FilterVarugruppButton;
