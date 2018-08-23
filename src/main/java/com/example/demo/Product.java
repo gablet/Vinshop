@@ -28,6 +28,7 @@ public class Product {
     private double Alkoholhalt;
     private String produktbild;
     private int lagersaldo;
+    private String isvisible;
 
     public Product() {
 
@@ -187,6 +188,14 @@ public class Product {
 
     public void setLagersaldo(int lagersaldo) {
         this.lagersaldo = lagersaldo;
+    }
+
+    public String getIsvisible() {
+        return isvisible;
+    }
+
+    public void setIsvisible(String isvisible) {
+        this.isvisible = isvisible;
     }
 }
 
