@@ -18,15 +18,12 @@ public class OrderController {
 
 
 
+
+
         //repository.save(order);
 
 
         System.out.println(order.getArtikelnr());
     }
-
-
-
-
-
 
 }
