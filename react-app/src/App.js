@@ -5,8 +5,8 @@ import axios from "axios";
 import Navigation from "./Components/Navigation";
 import ProductList from "./Components/ProductList";
 import Popup from "./Components/Popup";
+import FilterButton from "./Components/FilterButton";
 import SortButton from "./Components/SortButton";
-
 
 class App extends Component {
   constructor(props) {
@@ -15,6 +15,7 @@ class App extends Component {
       products: [],
       cart: [],
     };
+
     axios
       .get("http://localhost:8090")
       .then(response => {
@@ -25,6 +26,7 @@ class App extends Component {
         // the original State object.
         const newState = Object.assign({}, this.state, { products: newWine });
 
+        this.state.initialProducts = newState.products;
         // store the new state object in the component's state
         this.setState(newState);
       })
@@ -40,6 +42,15 @@ class App extends Component {
       if (e === product && e.lagersaldo > 0) e.lagersaldo--;
     });
   }
+  
+  filterProductStateBy = (criteria, products) => {
+    console.log(products);
+      products.forEach(e => {
+        if(e.varugrupp == criteria)
+        e.isVisble = (true? false : true)
+      })
+      console.log(products);
+    };
 
   sortProductStateBy = (field, products) => {
 
@@ -61,6 +72,7 @@ class App extends Component {
   };
 
 
+
   render() {
     return (
       <div className="App">
@@ -70,10 +82,12 @@ class App extends Component {
               <div className="set-height" />
               <img src={logo} className="App-logo" alt="logo" />
             </div>
+            <div class="bottom">
+              <FilterButton products={this.state.products}
+                  filterProductStateBy={this.filterProductStateBy}/>
 
             <div className="bottom">
               <SortButton products={this.state.products} sortProductStateBy={this.sortProductStateBy}/>
-
             </div>
           </div>
 
