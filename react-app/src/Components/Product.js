@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import './Product.css';
-import bottle from './bottle.jpg';
+import "./Product.css";
+import bottle from "./bottle.jpg";
 
 class Product extends Component {
   render() {
@@ -8,17 +8,16 @@ class Product extends Component {
     return (
       <div className="Product">
         <div className="Product__img">
-          <img className="images"
-            src={bottle}
-            alt="Product Item"
-          />
+          <img className="images" src={bottle} alt="Product Item" />
         </div>
         <div className="Product__details">
           <div className="Product__cat">{product.varugrupp}</div>
           <h4>{product.namn}</h4>
           <h4>{product.namn2}</h4>
           <p>{product.artikelnr}</p>
-          <p>{product.ursprung}, {product.ursprungsland}</p>
+          <p>
+            {product.ursprung}, {product.ursprungsland}
+          </p>
           <div className="Product__price-cart">
             <p>{product.prisinklmoms} SEK</p>
             <button onClick={this.props.handleClick.bind(this, product)}>
