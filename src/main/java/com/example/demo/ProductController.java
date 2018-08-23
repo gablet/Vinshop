@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import org.json.JSONObject;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,12 +27,32 @@ public class ProductController {
             return products = repository.findAll();
     }
 
+/*    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping(value = "/createorder", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void createOrder(@RequestBody ArrayList<Product> products, HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+
+        //System.out.println(products.);
+
+
+        //repository.save(products);
+
+        //repository.save(order);
+        //System.out.println(order.getArtikelnr());
+    }*/
+
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(value = "/createorder", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void createOrder(@RequestBody List<Product> products, HttpServletResponse response) {
         response.setHeader("Access-Control-Allow-Origin", "*");
 
-        repository.save(products);
+        System.out.println(products.get(0).getArtikelnr());
+
+
+        //System.out.println(products.);
+
+
+        //repository.save(products);
 
         //repository.save(order);
         //System.out.println(order.getArtikelnr());

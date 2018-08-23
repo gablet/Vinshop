@@ -10,22 +10,23 @@ import javax.persistence.Table;
 public class Product {
 
     @Id
-    private int Artikelnr;
+    @GeneratedValue
+    private int artikelnr;
 
-    private int Nr;
-    private String Namn;
-    private String Namn2;
-    private double Prisinklmoms;
-    private double Volymiml;
+    private int nr;
+    private String namn;
+    private String namn2;
+    private double prisinklmoms;
+    private double volymiml;
     private double prisperliter;
-    private String Varugrupp;
-    private String Flaska;
-    private String Ursprung;
-    private String Ursprungsland;
-    private String Producent;
-    private String Leverantor;
-    private int Argang;
-    private double Alkoholhalt;
+    private String varugrupp;
+    private String flaska;
+    private String ursprung;
+    private String ursprungsland;
+    private String producent;
+    private String leverantor;
+    private int argang;
+    private double alkoholhalt;
     private String produktbild;
     private int lagersaldo;
     private String isvisible;
@@ -34,72 +35,72 @@ public class Product {
 
     }
 
-    public Product(int artikelnr, int nr, String namn, String namn2, double prisinklmoms, double volymiml, double prisperliter, String varugrupp, String flaska, String ursprung, String ursprungsland, String producent, String leverantor, int argang, double alkoholhalt, String produktbild, int lagersaldo) {
-        Artikelnr = artikelnr;
-        Nr = nr;
-        Namn = namn;
-        Namn2 = namn2;
-        Prisinklmoms = prisinklmoms;
-        Volymiml = volymiml;
+    public Product(int nr, String namn, String namn2, double prisinklmoms, double volymiml, double prisperliter, String varugrupp, String flaska, String ursprung, String ursprungsland, String producent, String leverantor, int argang, double alkoholhalt, String produktbild, int lagersaldo, String isvisible) {
+        this.nr = nr;
+        this.namn = namn;
+        this.namn2 = namn2;
+        this.prisinklmoms = prisinklmoms;
+        this.volymiml = volymiml;
         this.prisperliter = prisperliter;
-        Varugrupp = varugrupp;
-        Flaska = flaska;
-        Ursprung = ursprung;
-        Ursprungsland = ursprungsland;
-        Producent = producent;
-        Leverantor = leverantor;
-        Argang = argang;
-        Alkoholhalt = alkoholhalt;
+        this.varugrupp = varugrupp;
+        this.flaska = flaska;
+        this.ursprung = ursprung;
+        this.ursprungsland = ursprungsland;
+        this.producent = producent;
+        this.leverantor = leverantor;
+        this.argang = argang;
+        this.alkoholhalt = alkoholhalt;
         this.produktbild = produktbild;
         this.lagersaldo = lagersaldo;
+        this.isvisible = isvisible;
     }
 
     public int getArtikelnr() {
-        return Artikelnr;
+        return artikelnr;
     }
 
     public void setArtikelnr(int artikelnr) {
-        Artikelnr = artikelnr;
+        this.artikelnr = artikelnr;
     }
 
     public int getNr() {
-        return Nr;
+        return nr;
     }
 
     public void setNr(int nr) {
-        Nr = nr;
+        this.nr = nr;
     }
 
     public String getNamn() {
-        return Namn;
+        return namn;
     }
 
     public void setNamn(String namn) {
-        Namn = namn;
+        this.namn = namn;
     }
 
     public String getNamn2() {
-        return Namn2;
+        return namn2;
     }
 
     public void setNamn2(String namn2) {
-        Namn2 = namn2;
+        this.namn2 = namn2;
     }
 
     public double getPrisinklmoms() {
-        return Prisinklmoms;
+        return prisinklmoms;
     }
 
     public void setPrisinklmoms(double prisinklmoms) {
-        Prisinklmoms = prisinklmoms;
+        this.prisinklmoms = prisinklmoms;
     }
 
     public double getVolymiml() {
-        return Volymiml;
+        return volymiml;
     }
 
     public void setVolymiml(double volymiml) {
-        Volymiml = volymiml;
+        this.volymiml = volymiml;
     }
 
     public double getPrisperliter() {
@@ -111,67 +112,67 @@ public class Product {
     }
 
     public String getVarugrupp() {
-        return Varugrupp;
+        return varugrupp;
     }
 
     public void setVarugrupp(String varugrupp) {
-        Varugrupp = varugrupp;
+        this.varugrupp = varugrupp;
     }
 
     public String getFlaska() {
-        return Flaska;
+        return flaska;
     }
 
     public void setFlaska(String flaska) {
-        Flaska = flaska;
+        this.flaska = flaska;
     }
 
     public String getUrsprung() {
-        return Ursprung;
+        return ursprung;
     }
 
     public void setUrsprung(String ursprung) {
-        Ursprung = ursprung;
+        this.ursprung = ursprung;
     }
 
     public String getUrsprungsland() {
-        return Ursprungsland;
+        return ursprungsland;
     }
 
     public void setUrsprungsland(String ursprungsland) {
-        Ursprungsland = ursprungsland;
+        this.ursprungsland = ursprungsland;
     }
 
     public String getProducent() {
-        return Producent;
+        return producent;
     }
 
     public void setProducent(String producent) {
-        Producent = producent;
+        this.producent = producent;
     }
 
     public String getLeverantor() {
-        return Leverantor;
+        return leverantor;
     }
 
     public void setLeverantor(String leverantor) {
-        Leverantor = leverantor;
+        this.leverantor = leverantor;
     }
 
     public int getArgang() {
-        return Argang;
+        return argang;
     }
 
     public void setArgang(int argang) {
-        Argang = argang;
+        this.argang = argang;
     }
 
     public double getAlkoholhalt() {
-        return Alkoholhalt;
+        return alkoholhalt;
     }
 
     public void setAlkoholhalt(double alkoholhalt) {
-        Alkoholhalt = alkoholhalt;
+        this.alkoholhalt = alkoholhalt;
     }
 
     public String getProduktbild() {
