@@ -10,13 +10,14 @@ class SortButton extends React.Component {
   render() {
     return (
       <div className="sort-section">
-        <h1>Sortera efter</h1>
+        <h1>Sortera efter:</h1>
         <button
           className="sort-button"
           onClick={this.sortProducts.bind(this, "prisinklmoms")}
         >
           Pris
         </button>
+       
         <button
           className="sort-button"
           onClick={this.sortProducts.bind(this, "namn")}

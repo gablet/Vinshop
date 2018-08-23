@@ -12,6 +12,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      showMenu: false,
       products: [],
       cart: [],
     };
@@ -30,6 +31,23 @@ class App extends Component {
       })
       .catch(error => console.log(error));
     this.handleAddToCart = this.handleAddToCart.bind(this);
+    this.showMenu = this.showMenu.bind(this);
+  }
+
+  showMenu(event) {
+    event.preventDefault();
+    
+    this.setState({
+      showMenu: true,
+    });
+  }
+
+  dontShowMenu(event) {
+    event.preventDefault();
+    
+    this.setState({
+      showMenu: false,
+    });
   }
 
   handleAddToCart(product) {
@@ -71,7 +89,7 @@ class App extends Component {
               <img src={logo} className="App-logo" alt="logo" />
             </div>
 
-            <div className="bottom">
+            <div id="leftcolumn" className="bottom">
               <SortButton products={this.state.products} sortProductStateBy={this.sortProductStateBy}/>
 
             </div>
@@ -94,7 +112,19 @@ class App extends Component {
           <div id="right" className="column">
             <div className="top-right">
               <div className="set-height">
+                <button onMouseOver={this.showMenu} onMouseLeave={this.dontShowMenu}>Visa kundvagn
                 <Navigation cart={this.state.cart} />
+                </button>
+                {this.state.showMenu? (
+                    <div className="menu">
+                      <button> Menu item 1 </button>
+                      <button> Menu item 2 </button>
+                      <button> Menu item 3 </button>
+                    </div>
+                  )
+                  : (null)
+                  }
+        
                 <Popup cart={this.state.cart}/>
               </div>
             </div>
