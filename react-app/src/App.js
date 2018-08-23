@@ -7,13 +7,13 @@ import ProductList from "./Components/ProductList";
 import Popup from "./Components/Popup";
 import SortButton from "./Components/SortButton";
 
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       products: [],
       cart: [],
-      customer: []
     };
     axios
       .get("http://localhost:8090")
@@ -96,6 +96,7 @@ class App extends Component {
             <div class="top-right">
               <div className="set-height">
                 <Navigation cart={this.state.cart} />
+                <Popup cart={this.state.cart}/>
               </div>
             </div>
             <div class="bottom">
