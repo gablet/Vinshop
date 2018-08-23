@@ -8,7 +8,6 @@ import ProductList from "./Components/ProductList";
 import Popup from "./Components/Popup";
 import FilterVarugruppButton from "./Components/FilterVarugruppButton";
 import SortButton from "./Components/SortButton";
-import StickyContainer from "react";
 
 class App extends Component {
   constructor(props) {
@@ -16,7 +15,7 @@ class App extends Component {
     this.state = {
       showMenu: false,
       products: [],
-      cart: [],
+      cart: []
     };
 
     axios
@@ -41,17 +40,17 @@ class App extends Component {
 
   showMenu(event) {
     event.preventDefault();
-    
+
     this.setState({
-      showMenu: true,
+      showMenu: true
     });
   }
 
   dontShowMenu(event) {
     event.preventDefault();
-    
+
     this.setState({
-      showMenu: false,
+      showMenu: false
     });
   }
 
@@ -63,22 +62,23 @@ class App extends Component {
       if (e === product && e.lagersaldo > 0) e.lagersaldo--;
     });
   }
-  
-  filterProductsByVarugrupp = (criteria) => {
-      let filteredProducts = [];
-      this.state.products.forEach(function(e) {
-        if(e.varugrupp == criteria){
-          if(e.isvisible == "true"){
-            e.isvisible = "false";
-          }else{e.isvisible="true"}
+
+  filterProductsByVarugrupp = criteria => {
+    let filteredProducts = [];
+    this.state.products.forEach(function(e) {
+      if (e.varugrupp == criteria) {
+        if (e.isvisible == "true") {
+          e.isvisible = "false";
+        } else {
+          e.isvisible = "true";
         }
-        filteredProducts.push(e);
-      });
-      this.setState({products: filteredProducts});
-    };
+      }
+      filteredProducts.push(e);
+    });
+    this.setState({ products: filteredProducts });
+  };
 
   sortProductStateBy = (field, products) => {
-
     // Sorting ...
 
     console.log(products[1][field]);
@@ -96,36 +96,36 @@ class App extends Component {
     this.setState({ products: sortedProducts });
   };
 
-
-
   render() {
     return (
       <div className="App">
         <div className="wrapper">
-        
           <div id="left" className="column">
-          
             <div className="top-left">
-              <div className="set-height" />
               <img src={logo} className="App-logo" alt="logo" />
+              <div className="set-height" />
             </div>
 
             <div id="leftcolumn" className="bottom">
+              <div class="bottom">
+                <FilterVarugruppButton
+                  products={this.state.products}
+                  filterProductsByVarugrupp={this.filterProductsByVarugrupp}
+                />
 
-            <div class="bottom">
-              <FilterVarugruppButton products={this.state.products}
-                  filterProductsByVarugrupp={this.filterProductsByVarugrupp}/>
-
-              <SortButton products={this.state.products} sortProductStateBy={this.sortProductStateBy}/>
+                <SortButton
+                  products={this.state.products}
+                  sortProductStateBy={this.sortProductStateBy}
+                />
+              </div>
             </div>
-
+          </div>
           <div id="middle" className="column">
-         
             <div className="top-middle">
               {" "}
               <div className="set-height" />
             </div>
-          
+
             <div className="bottom">
               <ProductList
                 products={this.state.products}
@@ -135,32 +135,30 @@ class App extends Component {
           </div>
 
           <div id="right" className="column">
-        
             <div className="top-right">
               <div className="set-height">
-                <div id="dropmenu" onMouseOver={this.showMenu} onMouseLeave={this.dontShowMenu}>
-                <img src={shop} alt="shop"/>
-                <Navigation cart={this.state.cart} />
-                
-                {this.state.showMenu? (
+                <div
+                  id="dropmenu"
+                  onMouseOver={this.showMenu}
+                  onMouseLeave={this.dontShowMenu}
+                >
+                  <img src={shop} alt="shop" />
+                  <Navigation cart={this.state.cart} />
+
+                  {this.state.showMenu ? (
                     <div className="menu">
-                      
-                      <Popup cart={this.state.cart}/>
+                      <Popup cart={this.state.cart} />
                     </div>
-                  )
-                  : (null)
-                  }
-                  </div>
+                  ) : null}
+                </div>
               </div>
             </div>
-        
+
             <div className="bottom">
               <div className="set-width" />
-
             </div>
           </div>
         </div>
-      </div>
       </div>
     );
   }
