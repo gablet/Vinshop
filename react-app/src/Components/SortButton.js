@@ -6,20 +6,20 @@ class SortButton extends React.Component {
     var products = this.props.products;
     this.props.sortProductStateBy(field, products);
   }
-  
+
   render() {
     return (
       <div className="sort-section">
         <h1>Sortera efter</h1>
         <button
           className="sort-button"
-          onClick={this.sortProducts.bind(this, "Prisinklmoms")}
+          onClick={this.sortProducts.bind(this, "prisinklmoms")}
         >
           Pris
         </button>
         <button
           className="sort-button"
-          onClick={this.sortProducts.bind(this, "Namn")}
+          onClick={this.sortProducts.bind(this, "namn")}
         >
           {" "}
           Namn

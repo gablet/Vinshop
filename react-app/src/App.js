@@ -42,11 +42,10 @@ class App extends Component {
   }
 
   sortProductStateBy = (field, products) => {
+
     // Sorting ...
 
-    console.log(products);
-    console.log(products);
-
+    console.log(products[1][field]);
 
     var sortedProducts = products.sort((a, b) => {
       if (a[field] > b[field]) {
