@@ -9,6 +9,7 @@ class ProductList extends Component {
         this.renderProducts = this.renderProducts.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
+
     handleClick(product) {
         this.props.handleAddToCart(product)
     }
@@ -16,17 +17,18 @@ class ProductList extends Component {
     renderProducts(product) {
         return (
             <div className="col-md-6" key={product.id}>
-            <Product
-                product={product}
-                handleClick={this.handleClick}
-            ></Product>
+                <Product
+                    product={product}
+                    handleClick={this.handleClick}
+                ></Product>
             </div>
         );
     }
     render() {
         return (
             <div>
-                 {this.props.products.map(this.renderProducts)}
+                {this.props.products
+                    .map(this.renderProducts)}
             </div>
         );
     }

@@ -3,6 +3,13 @@ import "./Product.css";
 import bottle from "./bottle.jpg";
 
 class Product extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isVisible: true
+    }
+}
+
   render() {
     const product = this.props.product;
     return (
