@@ -145,8 +145,7 @@ class App extends Component {
               <div className="set-width" />
               <div
                   id="dropmenu"
-                  onMouseOver={this.showMenu}
-                  onMouseLeave={this.dontShowMenu}
+                  
                 >
                   <img src={shop} alt="shop" />
                   <Navigation cart={this.state.cart} />
