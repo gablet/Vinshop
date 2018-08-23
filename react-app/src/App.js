@@ -71,7 +71,7 @@ class App extends Component {
               <img src={logo} className="App-logo" alt="logo" />
             </div>
 
-            <div class="bottom">
+            <div className="bottom">
               <SortButton products={this.state.products} sortProductStateBy={this.sortProductStateBy}/>
 
             </div>
@@ -91,14 +91,14 @@ class App extends Component {
             </div>
           </div>
 
-          <div id="right" class="column">
-            <div class="top-right">
+          <div id="right" className="column">
+            <div className="top-right">
               <div className="set-height">
                 <Navigation cart={this.state.cart} />
                 <Popup cart={this.state.cart}/>
               </div>
             </div>
-            <div class="bottom">
+            <div className="bottom">
               <div className="set-width" />
 
             </div>

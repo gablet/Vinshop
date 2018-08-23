@@ -27,7 +27,7 @@ public class OrderController {
         //repository.save(order);
         //System.out.println(order.getArtikelnr());
     }
-
+    
 
     /**@CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value = "/createorder", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -36,6 +36,7 @@ public class OrderController {
 
         return null;
     }*/
+
 
 
 

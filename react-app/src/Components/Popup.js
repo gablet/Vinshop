@@ -2,6 +2,9 @@ import React from 'react';
 import ReactModal from 'react-modal';
 import Axios from 'axios';
 import App from "../App";
+import ReactDOM from 'react-dom';
+import "./PopUp.css";
+import Product from "./Product";
 
 
 class Popup extends React.Component {
@@ -26,7 +29,6 @@ class Popup extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const form = event.target;
     const customer = {
       firstname: document.getElementById("firstname").value,
       lastname: document.getElementById("lastname").value,
@@ -37,47 +39,56 @@ class Popup extends React.Component {
       city: document.getElementById("city").value,
       country: document.getElementById("country").value
     };
+    const cart = this.props.cart;
+    const result = [customer, this.props.cart[0]];
+    console.log(cart);
     console.log(customer);
-    const result = [customer, this.props.cart];
     console.log(result);
+    const url2 = 'http://localhost:8090/createcustomer';
+    Axios.post(url, {
+      customer,
+    });
     const url = 'http://localhost:8090/createorder';
     Axios.post(url, {
-      result,
+      cart,
     });
+    const element = (<h3>Tack för din beställning! Den levereras inom en timme tillsammans med faktura.</h3>);
+    ReactDOM.render(element, document.getElementById("orderinfo")); 
   }
 
   
   render () {
     return (
       <div>
-        <button onClick={this.handleOpenModal}>Gå till kassan</button>
+        <button className="button" onClick={this.handleOpenModal}>Gå till kassan</button>
         <ReactModal 
            isOpen={this.state.showModal}
            contentLabel="onRequestClose Example"
            onRequestClose={this.handleCloseModal}
-        >
+        > <div id="orderinfo">
           <h1>Leveransinformation: </h1>
 
           <form className="form" onSubmit={this.handleSubmit}>
-            <label>Förnamn: 
-              <input type="text" id="firstname" name="firstname" /></label>
-            <label>Efternamn: 
-              <input type="text" id="lastname" name="lastname"  /></label>
-            <label>Email: 
-              <input type="text" id="email" name="email" /></label>
-            <label>Adress: 
-              <input type="text" id="adress" name="adress" /></label>
-            <label>Adress 2: 
-              <input type="text" id="adress2" name="adress2"  /></label>
+            <label>Förnamn:   <input className="input" type="text" id="firstname" name="firstname" /></label><br/>
+            <label>Efternamn: <input className="input" type="text" id="lastname" name="lastname"  /></label><br/>
+            <label>Email:     <input className="input" type="text" id="email" name="email" /></label><br/>
+            <label>Adress:    <input className="input" type="text" id="adress" name="adress" /></label><br/>
+            <label>Adress 2:  <input className="input" type="text" id="adress2" name="adress2"  /></label><br/>
             <label>Postnummer: 
-              <input type="text" id="zipcode" name="zipcode" /></label>
+              <input className="input" type="text" id="zipcode" name="zipcode" /></label><br/>
             <label>Postort: 
-              <input type="text" id="city" name="city" /></label>
+              <input className="input" type="text" id="city" name="city" /></label><br/>
             <label>Land: 
-              <input type="text" id="country" name="country" /></label>
-            <input type="submit" value="Submit" />
+              <input className="input" type="text" id="country" name="country" /></label><br/>
+            <input className="button" type="submit" value="Lägg din beställning"/>
           </form>
-          <button onClick={this.handleCloseModal}>Avbryt köp</button>
+          <button className="button" onClick={this.handleCloseModal}>Avbryt köp</button>
+         
+          </div>
+          <div id="order">
+            <h2>Din beställning: </h2><br/>
+            
+          </div>
         </ReactModal>
       </div>
     );
