@@ -68,8 +68,6 @@ class App extends Component {
     this.setState({ products: sortedProducts });
   };
 
-
-
   render() {
     return (
       <div className="App">
