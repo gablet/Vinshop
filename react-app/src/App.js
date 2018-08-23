@@ -46,9 +46,9 @@ class App extends Component {
   filterProductStateBy = (criteria, products) => {
     console.log(products);
       products.forEach(e => {
-        if(e.varugrupp == criteria)
+        if(e.varugrupp != criteria)
         e.isVisble = (true? false : true)
-      })
+      });
       console.log(products);
     };
 
