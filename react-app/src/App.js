@@ -18,7 +18,7 @@ class App extends Component {
     axios
       .get("http://localhost:8090")
       .then(response => {
-        // create an array of contacts only with relevant data
+        
         const newWine = response.data;
 
         // create a new "State" object without mutating
@@ -44,9 +44,6 @@ class App extends Component {
   sortProductStateBy = (field, products) => {
 
     // Sorting ...
-
-    console.log(products[1][field]);
-
     var sortedProducts = products.sort((a, b) => {
       if (a[field] > b[field]) {
         return 1;
@@ -59,6 +56,7 @@ class App extends Component {
     // Then call setState
     this.setState({ products: sortedProducts });
   };
+
 
 
   render() {
