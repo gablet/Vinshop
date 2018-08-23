@@ -15,8 +15,6 @@ public class Order {
     @Id
     @GeneratedValue
     private int orderid;
-
-
     private int customerid;
     private int artikelnr;
     private int amount;
