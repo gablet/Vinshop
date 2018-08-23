@@ -12,14 +12,19 @@ public class Customer {
     @Id
     @GeneratedValue
     private int customerid;
+
     private String firstname;
     private String lastname;
     private String email;
     private String adress;
     private String adress2;
-    private int zipcode;
+    private String zipcode; // set to string
     private String city;
     private String country;
+
+    public Customer() {
+
+    }
 
 
     public int getCustomerid() {
@@ -70,11 +75,11 @@ public class Customer {
         this.adress2 = adress2;
     }
 
-    public int getZipcode() {
+    public String getZipcode() {
         return zipcode;
     }
 
-    public void setZipcode(int zipcode) {
+    public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
 
@@ -92,5 +97,20 @@ public class Customer {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerid=" + customerid +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", adress='" + adress + '\'' +
+                ", adress2='" + adress2 + '\'' +
+                ", zipcode=" + zipcode +
+                ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
+                '}';
     }
 }
