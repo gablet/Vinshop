@@ -65,29 +65,32 @@ class App extends Component {
     return (
       <div className="App">
         <div className="wrapper">
-          <div id="left" class="column">
-            <div class="top-left">
+          <div id="left" className="column">
+            <div className="top-left">
               <div className="set-height" />
               <img src={logo} className="App-logo" alt="logo" />
             </div>
+
             <div class="bottom">
               <SortButton products={this.state.products} sortProductStateBy={this.sortProductStateBy}/>
+
             </div>
           </div>
 
-          <div id="middle" class="column">
-            <div class="top-middle">
+          <div id="middle" className="column">
+            <div className="top-middle">
               {" "}
               <div className="set-height" />
             </div>
 
-            <div class="bottom">
+            <div className="bottom">
               <ProductList
                 products={this.state.products}
                 handleAddToCart={this.handleAddToCart}
               />
             </div>
           </div>
+
           <div id="right" class="column">
             <div class="top-right">
               <div className="set-height">
@@ -96,6 +99,7 @@ class App extends Component {
             </div>
             <div class="bottom">
               <div className="set-width" />
+
             </div>
           </div>
         </div>
