@@ -5,7 +5,7 @@ import axios from "axios";
 import Navigation from "./Components/Navigation";
 import ProductList from "./Components/ProductList";
 import Popup from "./Components/Popup";
-import FilterButton from "./Components/FilterButton";
+import FilterVarugruppButton from "./Components/FilterVarugruppButton";
 import SortButton from "./Components/SortButton";
 
 class App extends Component {
@@ -43,13 +43,17 @@ class App extends Component {
     });
   }
   
-  filterProductStateBy = (criteria, products) => {
-    console.log(products);
-      products.forEach(e => {
-        if(e.varugrupp != criteria)
-        e.isVisble = (true? false : true)
+  filterProductsByVarugrupp = (criteria) => {
+      let filteredProducts = [];
+      this.state.products.forEach(function(e) {
+        if(e.varugrupp == criteria){
+          if(e.isvisible == "true"){
+            e.isvisible = "false";
+          }else{e.isvisible="true"}
+        }
+        filteredProducts.push(e);
       });
-      console.log(products);
+      this.setState({products: filteredProducts});
     };
 
   sortProductStateBy = (field, products) => {
@@ -83,13 +87,10 @@ class App extends Component {
               <img src={logo} className="App-logo" alt="logo" />
             </div>
             <div class="bottom">
-              <FilterButton products={this.state.products}
-                  filterProductStateBy={this.filterProductStateBy}/>
-
-            <div className="bottom">
+              <FilterVarugruppButton products={this.state.products}
+                  filterProductsByVarugrupp={this.filterProductsByVarugrupp}/>
               <SortButton products={this.state.products} sortProductStateBy={this.sortProductStateBy}/>
             </div>
-          </div>
 
           <div id="middle" className="column">
             <div className="top-middle">

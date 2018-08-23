@@ -28,6 +28,7 @@ class ProductList extends Component {
         return (
             <div>
                 {this.props.products
+                    .filter(e => e.isvisible == "true")
                     .map(this.renderProducts)}
             </div>
         );
