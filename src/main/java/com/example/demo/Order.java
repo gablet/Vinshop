@@ -10,24 +10,22 @@ import javax.persistence.Table;
 
 @Table(name ="orders")
 @Entity
-public class Orders {
+public class Order {
 
     @Id
     @GeneratedValue
     private int orderid;
-
-
     private int customerid;
     private int artikelnr;
     private int amount;
     private double sumprice;
     private String paymentmethod;
 
-    public Orders() {
+    public Order() {
 
     }
 
-    public Orders(int customerid, int artikelnr, int amount, double sumprice, String paymentmethod) {
+    public Order(int customerid, int artikelnr, int amount, double sumprice, String paymentmethod) {
         this.customerid = customerid;
         this.artikelnr = artikelnr;
         this.amount = amount;

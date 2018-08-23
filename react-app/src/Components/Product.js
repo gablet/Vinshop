@@ -3,6 +3,9 @@ import "./Product.css";
 import bottle from "./bottle.jpg";
 
 class Product extends Component {
+
+
+
   render() {
     const product = this.props.product;
     return (

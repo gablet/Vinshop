@@ -6,9 +6,9 @@ import axios from "axios";
 import Navigation from "./Components/Navigation";
 import ProductList from "./Components/ProductList";
 import Popup from "./Components/Popup";
+import FilterVarugruppButton from "./Components/FilterVarugruppButton";
 import SortButton from "./Components/SortButton";
 import StickyContainer from "react";
-
 
 class App extends Component {
   constructor(props) {
@@ -18,6 +18,7 @@ class App extends Component {
       products: [],
       cart: [],
     };
+
     axios
       .get("http://localhost:8090")
       .then(response => {
@@ -28,6 +29,7 @@ class App extends Component {
         // the original State object.
         const newState = Object.assign({}, this.state, { products: newWine });
 
+        this.state.initialProducts = newState.products;
         // store the new state object in the component's state
         this.setState(newState);
       })
@@ -61,6 +63,19 @@ class App extends Component {
       if (e === product && e.lagersaldo > 0) e.lagersaldo--;
     });
   }
+  
+  filterProductsByVarugrupp = (criteria) => {
+      let filteredProducts = [];
+      this.state.products.forEach(function(e) {
+        if(e.varugrupp == criteria){
+          if(e.isvisible == "true"){
+            e.isvisible = "false";
+          }else{e.isvisible="true"}
+        }
+        filteredProducts.push(e);
+      });
+      this.setState({products: filteredProducts});
+    };
 
   sortProductStateBy = (field, products) => {
 
@@ -82,6 +97,7 @@ class App extends Component {
   };
 
 
+
   render() {
     return (
       <div className="App">
@@ -93,11 +109,15 @@ class App extends Component {
               <div className="set-height" />
               <img src={logo} className="App-logo" alt="logo" />
             </div>
-            <div id="leftcolumn" className="bottom">
-              <SortButton products={this.state.products} sortProductStateBy={this.sortProductStateBy}/>
 
+            <div id="leftcolumn" className="bottom">
+
+            <div class="bottom">
+              <FilterVarugruppButton products={this.state.products}
+                  filterProductsByVarugrupp={this.filterProductsByVarugrupp}/>
+
+              <SortButton products={this.state.products} sortProductStateBy={this.sortProductStateBy}/>
             </div>
-          </div>
 
           <div id="middle" className="column">
          
@@ -140,6 +160,7 @@ class App extends Component {
             </div>
           </div>
         </div>
+      </div>
       </div>
     );
   }
