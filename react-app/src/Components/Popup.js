@@ -44,11 +44,11 @@ class Popup extends React.Component {
     console.log(cart);
     console.log(customer);
     console.log(result);
+    const url = 'http://localhost:8090/createorder';
     const url2 = 'http://localhost:8090/createcustomer';
     Axios.post(url2, {
       customer,
     });
-    const url = 'http://localhost:8090/createorder';
     Axios.post(url, {
       cart,
     });

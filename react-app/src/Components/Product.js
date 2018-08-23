@@ -3,21 +3,17 @@ import "./Product.css";
 import bottle from "./bottle.jpg";
 
 class Product extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isVisible: true
-    }
-}
+
+
 
   render() {
     const product = this.props.product;
     return (
       <div className="Product">
-        <div className="Product__img">
+        <div id="Product__img">
           <img className="images" src={bottle} alt="Product Item" />
         </div>
-        <div className="Product__details">
+        <div id="Product__details">
           <div className="Product__cat">{product.varugrupp}</div>
           <h4>{product.namn}</h4>
           <h4>{product.namn2}</h4>

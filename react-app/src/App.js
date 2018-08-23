@@ -1,19 +1,21 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
+import shop from "./shop.svg";
 import "./App.css";
 import axios from "axios";
 import Navigation from "./Components/Navigation";
 import ProductList from "./Components/ProductList";
 import Popup from "./Components/Popup";
-import FilterButton from "./Components/FilterButton";
+import FilterVarugruppButton from "./Components/FilterVarugruppButton";
 import SortButton from "./Components/SortButton";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      showMenu: false,
       products: [],
-      cart: [],
+      cart: []
     };
 
     axios
@@ -32,6 +34,24 @@ class App extends Component {
       })
       .catch(error => console.log(error));
     this.handleAddToCart = this.handleAddToCart.bind(this);
+    this.showMenu = this.showMenu.bind(this);
+    this.dontShowMenu = this.dontShowMenu.bind(this);
+  }
+
+  showMenu(event) {
+    event.preventDefault();
+
+    this.setState({
+      showMenu: true
+    });
+  }
+
+  dontShowMenu(event) {
+    event.preventDefault();
+
+    this.setState({
+      showMenu: false
+    });
   }
 
   handleAddToCart(product) {
@@ -42,18 +62,23 @@ class App extends Component {
       if (e === product && e.lagersaldo > 0) e.lagersaldo--;
     });
   }
-  
-  filterProductStateBy = (criteria, products) => {
-    console.log(products);
-      products.forEach(e => {
-        if(e.varugrupp == criteria)
-        e.isVisble = (true? false : true)
-      })
-      console.log(products);
-    };
+
+  filterProductsByVarugrupp = criteria => {
+    let filteredProducts = [];
+    this.state.products.forEach(function(e) {
+      if (e.varugrupp == criteria) {
+        if (e.isvisible == "true") {
+          e.isvisible = "false";
+        } else {
+          e.isvisible = "true";
+        }
+      }
+      filteredProducts.push(e);
+    });
+    this.setState({ products: filteredProducts });
+  };
 
   sortProductStateBy = (field, products) => {
-
     // Sorting ...
 
     console.log(products[1][field]);
@@ -71,26 +96,30 @@ class App extends Component {
     this.setState({ products: sortedProducts });
   };
 
-
-
   render() {
     return (
       <div className="App">
         <div className="wrapper">
           <div id="left" className="column">
             <div className="top-left">
-              <div className="set-height" />
               <img src={logo} className="App-logo" alt="logo" />
+              <div className="set-height" />
             </div>
-            <div class="bottom">
-              <FilterButton products={this.state.products}
-                  filterProductStateBy={this.filterProductStateBy}/>
 
-            <div className="bottom">
-              <SortButton products={this.state.products} sortProductStateBy={this.sortProductStateBy}/>
+            <div id="leftcolumn" className="bottom">
+              <div class="bottom">
+                <FilterVarugruppButton
+                  products={this.state.products}
+                  filterProductsByVarugrupp={this.filterProductsByVarugrupp}
+                />
+
+                <SortButton
+                  products={this.state.products}
+                  sortProductStateBy={this.sortProductStateBy}
+                />
+              </div>
             </div>
           </div>
-
           <div id="middle" className="column">
             <div className="top-middle">
               {" "}
@@ -108,17 +137,28 @@ class App extends Component {
           <div id="right" className="column">
             <div className="top-right">
               <div className="set-height">
-                <Navigation cart={this.state.cart} />
-                <Popup cart={this.state.cart}/>
+                <div
+                  id="dropmenu"
+                  onMouseOver={this.showMenu}
+                  onMouseLeave={this.dontShowMenu}
+                >
+                  <img src={shop} alt="shop" />
+                  <Navigation cart={this.state.cart} />
+
+                  {this.state.showMenu ? (
+                    <div className="menu">
+                      <Popup cart={this.state.cart} />
+                    </div>
+                  ) : null}
+                </div>
               </div>
             </div>
+
             <div className="bottom">
               <div className="set-width" />
-
             </div>
           </div>
         </div>
-      </div>
       </div>
     );
   }
