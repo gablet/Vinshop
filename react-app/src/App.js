@@ -5,7 +5,7 @@ import axios from "axios";
 import Navigation from "./Components/Navigation";
 import ProductList from "./Components/ProductList";
 import Popup from "./Components/Popup";
-
+import SortButton from "./Components/SortButton";
 
 class App extends Component {
   constructor(props) {
@@ -29,15 +29,36 @@ class App extends Component {
         this.setState(newState);
       })
       .catch(error => console.log(error));
-      this.handleAddToCart = this.handleAddToCart.bind(this);
+    this.handleAddToCart = this.handleAddToCart.bind(this);
   }
 
   handleAddToCart(product) {
     const cartItem = this.state.cart.find(x => x.id === product.id);
-    product.lagersaldo > 0 && this.setState({ cart: [...this.state.cart, product] });
-    this.state.products.forEach(e => {if (e===product && e.lagersaldo>0) e.lagersaldo--})
+    product.lagersaldo > 0 &&
+      this.setState({ cart: [...this.state.cart, product] });
+    this.state.products.forEach(e => {
+      if (e === product && e.lagersaldo > 0) e.lagersaldo--;
+    });
   }
+
+  sortProductStateBy = (field, products) => {
+    // Sorting ...
+    var sortedProducts = products.sort((a, b) => {
+      if (a[field] > b[field]) {
+        return 1;
+      }
+      if (a[field] < b[field]) {
+        return -1;
+      }
+      return 0;
+    });
+    // Then call setState
+    this.setState({ products: sortedProducts });
+  };
+
+
   
+
   render() {
     return (
       <div className="App">
@@ -48,9 +69,7 @@ class App extends Component {
               <img src={logo} className="App-logo" alt="logo" />
             </div>
             <div class="bottom">
-              <a href="#white">Vitt</a> <br/>
-              <a href="#red">Rött</a>   <br/>
-              <a href="#sparkling">Mousserande</a>  <br/>
+              <SortButton products={this.state.products}/>
             </div>
           </div>
 
@@ -69,19 +88,16 @@ class App extends Component {
           </div>
           <div id="right" class="column">
             <div class="top-right">
-            
-
               <div className="set-height">
-              <Navigation cart={this.state.cart} /></div>
+                <Navigation cart={this.state.cart} />
+              </div>
             </div>
             <div class="bottom">
-            <div className="set-width" />
-
+              <div className="set-width" />
             </div>
           </div>
-
         </div>
-        </div>
+      </div>
     );
   }
 }
