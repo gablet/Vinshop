@@ -12,7 +12,6 @@ public class Customer {
     @Id
     @GeneratedValue
     private int customerid;
-
     private String firstname;
     private String lastname;
     private String email;
