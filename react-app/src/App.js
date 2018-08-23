@@ -16,7 +16,6 @@ class App extends Component {
       customer: []
     };
 
-  
     axios
       .get("http://localhost:8090")
       .then(response => {
@@ -42,13 +41,14 @@ class App extends Component {
   }
   
   filterProductStateBy = (criteria, products) => {
-  var filteredProducts = products.filter(function(obj) {
-      return Object.keys(criteria).every(function (c) {
-        return obj[c] === (criteria[c]);
-      });
-    });
-    this.setState({products: filteredProducts});
-  }
+    console.log(products);
+      products.forEach(e => {
+        if(e.varugrupp == criteria)
+        e.isVisble = (true? false : true)
+      })
+      console.log(products);
+    };
+      
 
   render() {
     return (

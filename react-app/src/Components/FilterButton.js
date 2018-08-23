@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import "./Product.css";
 
 class FilterButton extends Component {
-   filterProducts(field){
-       console.log("HEJSAN");
+   filterProducts(criteria){
         var products = this.props.products;
-        this.props.filterProductStateBy(field, products);
+        this.props.filterProductStateBy(criteria, products);
     }
 
     render() {
@@ -14,17 +13,17 @@ class FilterButton extends Component {
             <h1>Filtrera på:</h1>
                 <button 
                     className="filter-button" 
-                    onClick={this.filterProducts.bind(this, {varugrupp: "Rött vin"})}> 
+                    onClick={this.filterProducts.bind(this, "Rött vin")}> 
                     Rött vin
                 </button>
                 <button 
                     className="filter-button" 
-                    onClick={this.filterProducts.bind(this, {varugrupp: "Vitt vin"})}> 
+                    onClick={this.filterProducts.bind(this, "Vitt vin")}> 
                     Vitt vin
                 </button>
                 <button 
                     className="filter-button" 
-                    onClick={this.filterProducts.bind(this, {varugrupp: "Mousserande vin"})}> 
+                    onClick={this.filterProducts.bind(this, "Mousserande vin")}> 
                     Mousserande vin
                 </button>
             </div>
