@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactModal from 'react-modal';
 import Axios from 'axios';
-
-
+import App from "../App";
 
 
 class Popup extends React.Component {
@@ -28,15 +27,22 @@ class Popup extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
-    const data = new FormData(form);
-    for (var p of data) {
-      console.log(p.value);
-    }
-    console.log(form);
-    console.log(data);
+    const customer = {
+      firstname: document.getElementById("firstname").value,
+      lastname: document.getElementById("lastname").value,
+      email: document.getElementById("email").value,
+      adress: document.getElementById("adress").value,
+      adress2: document.getElementById("adress2").value,
+      zipcode: document.getElementById("zipcode").value,
+      city: document.getElementById("city").value,
+      country: document.getElementById("country").value
+    };
+    console.log(customer);
+    const result = [customer, this.props.cart];
+    console.log(result);
     const url = 'http://localhost:8090/createorder';
     Axios.post(url, {
-      data,
+      result,
     });
   }
 
@@ -51,6 +57,7 @@ class Popup extends React.Component {
            onRequestClose={this.handleCloseModal}
         >
           <h1>Leveransinformation: </h1>
+
           <form className="form" onSubmit={this.handleSubmit}>
             <label>Förnamn: 
               <input type="text" id="firstname" name="firstname" /></label>
