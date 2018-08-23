@@ -27,13 +27,6 @@ public class OrderController {
         System.out.println("Helllo " + customer.getFirstname());
     }
 
-    /**@CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping(value = "/createorder", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Customer> getOrder(HttpServletResponse response, HttpServletRequest request) {
-        response.setHeader("Access-Control-Allow-Origin", "*");
-
-        return null;
-    }*/
 
 
 
