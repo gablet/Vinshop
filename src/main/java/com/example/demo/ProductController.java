@@ -1,8 +1,7 @@
 package com.example.demo;
 
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +23,17 @@ public class ProductController {
         response.setHeader("Access-Control-Allow-Origin", "*");
             List<Product> products = new ArrayList<>();
             return products = repository.findAll();
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping(value = "/createorder", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void createOrder(@RequestBody List<Product> products, HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+
+        repository.save(products);
+
+        //repository.save(order);
+        //System.out.println(order.getArtikelnr());
     }
 
 

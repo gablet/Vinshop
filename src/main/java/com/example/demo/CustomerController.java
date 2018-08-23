@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
         private CustomerRepository repository;
 
         @CrossOrigin(origins = "http://localhost:3000")
-        @PostMapping(value = "/createorder", consumes = MediaType.APPLICATION_JSON_VALUE)
+        @PostMapping(value = "/createcustomer", consumes = MediaType.APPLICATION_JSON_VALUE)
         public void createCustomer(@RequestBody Customer customer, HttpServletResponse response) {
             response.setHeader("Access-Control-Allow-Origin", "*");
             repository.save(customer);
