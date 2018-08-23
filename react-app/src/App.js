@@ -13,13 +13,12 @@ class App extends Component {
     super(props);
     this.state = {
       products: [],
-      cart: [],
+      cart: []
     };
 
     axios
       .get("http://localhost:8090")
       .then(response => {
-        
         const newWine = response.data;
 
         // create a new "State" object without mutating
@@ -42,18 +41,16 @@ class App extends Component {
       if (e === product && e.lagersaldo > 0) e.lagersaldo--;
     });
   }
-  
+
   filterProductStateBy = (criteria, products) => {
     console.log(products);
-      products.forEach(e => {
-        if(e.varugrupp != criteria)
-        e.isVisble = (true? false : true)
-      });
-      console.log(products);
-    };
+    products.forEach(e => {
+      if (e.varugrupp != criteria) e.isVisble = true ? false : true;
+    });
+    console.log(products);
+  };
 
   sortProductStateBy = (field, products) => {
-
     // Sorting ...
     var sortedProducts = products.sort((a, b) => {
       if (a[field] > b[field]) {
@@ -78,42 +75,44 @@ class App extends Component {
               <img src={logo} className="App-logo" alt="logo" />
             </div>
             <div class="bottom">
-              <FilterButton products={this.state.products}
-                  filterProductStateBy={this.filterProductStateBy}/>
-
-            <div className="bottom">
-              <SortButton products={this.state.products} sortProductStateBy={this.sortProductStateBy}/>
-            </div>
-          </div>
-
-          <div id="middle" className="column">
-            <div className="top-middle">
-              {" "}
-              <div className="set-height" />
-            </div>
-
-            <div className="bottom">
-              <ProductList
+              <FilterButton
                 products={this.state.products}
-                handleAddToCart={this.handleAddToCart}
-              />
-            </div>
-          </div>
+                filterProductStateBy={this.filterProductStateBy}/>
 
-          <div id="right" className="column">
-            <div className="top-right">
-              <div className="set-height">
-                <Navigation cart={this.state.cart} />
-                <Popup cart={this.state.cart}/>
+                <SortButton
+                  products={this.state.products}
+                  sortProductStateBy={this.sortProductStateBy} />
+
               </div>
             </div>
-            <div className="bottom">
-              <div className="set-width" />
 
+            <div id="middle" className="column">
+              <div className="top-middle">
+                {" "}
+                <div className="set-height" />
+              </div>
+
+              <div className="bottom">
+                <ProductList
+                  products={this.state.products}
+                  handleAddToCart={this.handleAddToCart}
+                />
+              </div>
+            </div>
+
+            <div id="right" className="column">
+              <div className="top-right">
+                <div className="set-height">
+                  <Navigation cart={this.state.cart} />
+                  <Popup cart={this.state.cart} />
+                </div>
+              </div>
+              <div className="bottom">
+                <div className="set-width" />
+              </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
     );
   }
