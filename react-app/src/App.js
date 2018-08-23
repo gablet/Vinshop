@@ -5,7 +5,7 @@ import axios from "axios";
 import Navigation from "./Components/Navigation";
 import ProductList from "./Components/ProductList";
 import Popup from "./Components/Popup";
-
+import FilterButton from "./Components/FilterButton";
 
 class App extends Component {
   constructor(props) {
@@ -15,6 +15,8 @@ class App extends Component {
       cart: [],
       customer: []
     };
+
+  
     axios
       .get("http://localhost:8090")
       .then(response => {
@@ -25,6 +27,7 @@ class App extends Component {
         // the original State object.
         const newState = Object.assign({}, this.state, { products: newWine });
 
+        this.state.initialProducts = newState.products;
         // store the new state object in the component's state
         this.setState(newState);
       })
@@ -38,6 +41,15 @@ class App extends Component {
     this.state.products.forEach(e => {if (e===product && e.lagersaldo>0) e.lagersaldo--})
   }
   
+  filterProductStateBy = (criteria, products) => {
+  var filteredProducts = products.filter(function(obj) {
+      return Object.keys(criteria).every(function (c) {
+        return obj[c] === (criteria[c]);
+      });
+    });
+    this.setState({products: filteredProducts});
+  }
+
   render() {
     return (
       <div className="App">
@@ -48,9 +60,8 @@ class App extends Component {
               <img src={logo} className="App-logo" alt="logo" />
             </div>
             <div class="bottom">
-              <a href="#white">Vitt</a> <br/>
-              <a href="#red">Rött</a>   <br/>
-              <a href="#sparkling">Mousserande</a>  <br/>
+              <FilterButton products={this.state.products}
+                  filterProductStateBy={this.filterProductStateBy}/>
             </div>
           </div>
 
