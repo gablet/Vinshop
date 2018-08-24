@@ -7,6 +7,7 @@ import "./PopUp.css";
 import Product from "./Product";
 
 
+
 class Popup extends React.Component {
   constructor () {
     super();
@@ -46,12 +47,12 @@ class Popup extends React.Component {
     console.log(result);
     const url = 'http://localhost:8090/createorder';
     const url2 = 'http://localhost:8090/createcustomer';
-    Axios.post(url2, {
+    Axios.post(url2,
       customer,
-    });
-    Axios.post(url, {
+    );
+    Axios.post(url, 
       cart,
-    });
+    );
     const element = (<h3>Tack för din beställning! Den levereras inom en timme tillsammans med faktura.</h3>);
     ReactDOM.render(element, document.getElementById("orderinfo")); 
   }
