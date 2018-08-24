@@ -5,7 +5,7 @@
     box-shadow:  0 4px 8px 0 #ccc, 0 6px 20px 0 #ccc;
     text-align: center;
     float: left;
-    height: 380px;
+    min-height: 400px;
 }
 
 .Product_img {

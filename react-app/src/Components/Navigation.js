@@ -1,20 +1,43 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 //import logo from 'C:\Users\Administrator\IdeaProjects\Vinshop\Vinshop\react-app\src\logo.svg';
-import './Nav.css';
+import "./Nav.css";
+import CartItem from "./CartItem";
 
 class Navigation extends Component {
-    render() {
-        return (
-            <div className="Nav">
+  constructor(props) {
+    super(props);
+    this.renderProducts = this.renderProducts.bind(this);
+    this.handleClickCart = this.handleClickCart.bind(this);
+  }
 
-                <div className="Nav-item Nav-logo">
-                </div>
-                <div className="Nav-item Nav-cart">
-                    <span className="fa fa-cart-plus"></span> {this.props.cart.length}
-                </div>
-            </div>
-        );
-    }
+  handleClickCart(product) {
+    this.props.handleRemoveFromCart(product);
+  }
+
+  renderProducts(product) {
+    return (
+
+        <CartItem product={product} handleClickCart={this.handleClickCart} />
+    
+    );
+  }
+
+  render() {
+    return (
+      <div className="Nav">
+        <div className="Nav-item Nav-logo" />
+        <div className="Nav-item Nav-cart">
+          <span className="fa fa-cart-plus" /> {this.props.cart.length}
+        </div>
+        <div>
+          {this.props.cart.reduce(function(tot, record) {
+            return tot + record.prisinklmoms;
+          }, 0)} SEK
+        </div>
+
+      </div>
+    );
+  }
 }
 
 export default Navigation;

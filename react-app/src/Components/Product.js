@@ -11,7 +11,7 @@ class Product extends Component {
     return (
       <div className="Product">
         <div id="Product__img">
-          <img className="images" src={bottle} alt="Product Item" />
+          <img className="images" src={product.produktbild} alt={bottle} />
         </div>
         <div id="Product__details">
           <div className="Product__cat">{product.varugrupp}</div>
@@ -30,7 +30,7 @@ class Product extends Component {
           <div className="BootItem__description">{product.name}</div>
           <div
             className="Product__stock"
-            style={{ color: product.id >= 5 ? "#417505" : "#CE0814" }}
+            style={{ color: product.lagersaldo >= 5 ? "#417505" : "#CE0814" }}
           >
             {product.lagersaldo} i lager.
           </div>

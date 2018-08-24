@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import Product from './Product'
 import './ProductList.css';
 
+
+
 class ProductList extends Component {
     constructor(props) {
         super(props)
@@ -29,6 +31,8 @@ class ProductList extends Component {
             <div>
                 {this.props.products
                     .filter(e => e.isvisible == "true")
+                    .filter(e => e.namn.toLowerCase().
+                    indexOf(this.props.search.toLowerCase()) !== -1)
                     .map(this.renderProducts)}
             </div>
         );

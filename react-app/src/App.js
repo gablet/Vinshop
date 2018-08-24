@@ -15,13 +15,13 @@ class App extends Component {
     this.state = {
       showMenu: true,
       products: [],
-      cart: []
+      cart: [],
+      search: ""
     };
 
     axios
       .get("http://localhost:8090")
       .then(response => {
-        // create an array of contacts only with relevant data
         const newWine = response.data;
 
         // create a new "State" object without mutating
@@ -34,8 +34,13 @@ class App extends Component {
       })
       .catch(error => console.log(error));
     this.handleAddToCart = this.handleAddToCart.bind(this);
+    this.handleRemoveFromCart = this.handleRemoveFromCart.bind(this);
     this.showMenu = this.showMenu.bind(this);
     this.dontShowMenu = this.dontShowMenu.bind(this);
+  }
+
+  updateSearch(event) {
+    this.setState({ search: event.target.value });
   }
 
   showMenu(event) {
@@ -55,16 +60,36 @@ class App extends Component {
   }
 
   handleAddToCart(product) {
+    console.log(this.state.products);
     const cartItem = this.state.cart.find(x => x.id === product.id);
     product.lagersaldo > 0 &&
       this.setState({ cart: [...this.state.cart, product] });
-    this.state.products.forEach(e => {
+    var array = this.state.products;
+    array.forEach(e => {
       if (e === product && e.lagersaldo > 0) e.lagersaldo--;
     });
+    this.setState({ products: array });
+  }
+
+  handleRemoveFromCart(product) {
+    console.log(this.state.products);
+    const cartItem = this.state.cart.find(x => x.id === product.id);
+    var array = [...this.state.cart]; // make a separate copy of the array
+    var index = array.indexOf(product);
+    array.splice(index, 1);
+    this.setState({ cart: array });
+    this.setState({ products: [...this.state.products, product] });
+    var array2 = this.state.products;
+    array2.forEach(e => {
+      if (e === product && e.lagersaldo > 0) e.lagersaldo++;
+    });
+    this.setState({ products: array2 });
   }
 
   filterProductsByVarugrupp = criteria => {
     let filteredProducts = [];
+    
+
     this.state.products.forEach(function(e) {
       if (e.varugrupp == criteria) {
         if (e.isvisible == "true") {
@@ -80,9 +105,6 @@ class App extends Component {
 
   sortProductStateBy = (field, products) => {
     // Sorting ...
-
-    console.log(products[1][field]);
-
     var sortedProducts = products.sort((a, b) => {
       if (a[field] > b[field]) {
         return 1;
@@ -122,12 +144,17 @@ class App extends Component {
           </div>
           <div id="middle" className="column">
             <div className="top-middle">
-              {" "}
+              <input id="search"
+                type="text"
+                value={this.state.search}
+                onChange={this.updateSearch.bind(this)}
+              />
               <div className="set-height" />
             </div>
 
-            <div className="bottom">
+            <div className="bottom" id="content">
               <ProductList
+                search={this.state.search}
                 products={this.state.products}
                 handleAddToCart={this.handleAddToCart}
               />
@@ -148,11 +175,18 @@ class App extends Component {
                   
                 >
                   <img src={shop} alt="shop" />
-                  <Navigation cart={this.state.cart} />
+                  <Navigation
+                    cart={this.state.cart}
+                    products={this.state.products}
+                    handleRemoveFromCart={this.handleRemoveFromCart}
+                  />
 
                   {this.state.showMenu ? (
                     <div className="menu">
-                      <Popup cart={this.state.cart} />
+                      <Popup
+                        cart={this.state.cart}
+                        handleRemoveFromCart={this.handleRemoveFromCart}
+                      />
                     </div>
                   ) : null}
                 </div>
