@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
-import shop from "./shop.svg";
+
 import "./App.css";
 import axios from "axios";
 import Navigation from "./Components/Navigation";
@@ -88,16 +88,18 @@ class App extends Component {
 
   filterProductsByVarugrupp = criteria => {
     let filteredProducts = [];
-    
 
     this.state.products.forEach(function(e) {
-      if (e.varugrupp == criteria) {
-        if (e.isvisible == "true") {
-          e.isvisible = "false";
-        } else {
+      if (!(criteria == "Alla viner")) {
+        if (e.varugrupp == criteria) {
           e.isvisible = "true";
+        } else {
+          e.isvisible = "false";
         }
+      } else {
+        e.isvisible = "true";
       }
+
       filteredProducts.push(e);
     });
     this.setState({ products: filteredProducts });
@@ -123,9 +125,8 @@ class App extends Component {
       <div className="App">
         <div className="wrapper">
           <div id="left" className="column">
-            <div className="top-left">
+            <div id="top-left" className="set-height">
               <img src={logo} className="App-logo" alt="logo" />
-              <div className="set-height" />
             </div>
 
             <div id="leftcolumn" className="bottom">
@@ -143,13 +144,13 @@ class App extends Component {
             </div>
           </div>
           <div id="middle" className="column">
-            <div className="top-middle">
-              <input id="search"
+            <div id="top-middle" className="set-height">
+              <input
+                id="search"
                 type="text"
                 value={this.state.search}
                 onChange={this.updateSearch.bind(this)}
               />
-              <div className="set-height" />
             </div>
 
             <div className="bottom" id="content">
@@ -162,34 +163,25 @@ class App extends Component {
           </div>
 
           <div id="right" className="column">
-            <div className="top-right">
-              <div className="set-height">
-                
-              </div>
-            </div>
+            <div id="top-right" className="set-height">
+              <div id="dropmenu">
+                <Navigation
+                  id="vagn"
+                  cart={this.state.cart}
+                  products={this.state.products}
+                  handleRemoveFromCart={this.handleRemoveFromCart}
+                />
 
-            <div className="bottom">
-              <div className="set-width" />
-              <div
-                  id="dropmenu"
-                  
-                >
-                  <img src={shop} alt="shop" />
-                  <Navigation
+                <div className="menu">
+                  <Popup
                     cart={this.state.cart}
-                    products={this.state.products}
                     handleRemoveFromCart={this.handleRemoveFromCart}
                   />
-
-                  {this.state.showMenu ? (
-                    <div className="menu">
-                      <Popup
-                        cart={this.state.cart}
-                        handleRemoveFromCart={this.handleRemoveFromCart}
-                      />
-                    </div>
-                  ) : null}
                 </div>
+              </div>
+            </div>
+            <div className="bottom">
+              <div className="set-width" />
             </div>
           </div>
         </div>

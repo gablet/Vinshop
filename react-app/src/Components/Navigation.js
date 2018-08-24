@@ -2,6 +2,8 @@ import React, { Component } from "react";
 //import logo from 'C:\Users\Administrator\IdeaProjects\Vinshop\Vinshop\react-app\src\logo.svg';
 import "./Nav.css";
 import CartItem from "./CartItem";
+import shop from "./shop.svg";
+
 
 class Navigation extends Component {
   constructor(props) {
@@ -27,6 +29,7 @@ class Navigation extends Component {
       <div className="Nav">
         <div className="Nav-item Nav-logo" />
         <div className="Nav-item Nav-cart">
+        <img id="bild" src={shop} alt="shop" />
           <span className="fa fa-cart-plus" /> {this.props.cart.length}
         </div>
         <div>

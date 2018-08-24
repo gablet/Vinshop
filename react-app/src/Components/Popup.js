@@ -1,39 +1,38 @@
-import React from "react";
-import ReactModal from "react-modal";
-import Axios from "axios";
+import React from 'react';
+import ReactModal from 'react-modal';
+import Axios from 'axios';
 import App from "../App";
-import ReactDOM from "react-dom";
+import ReactDOM from 'react-dom';
 import "./PopUp.css";
 import Product from "./Product";
 import CheckoutItem from "./CheckoutItem";
 import CheckoutItemCondensed from "./CheckoutItemCondensed";
 
 
-
 class Popup extends React.Component {
-  constructor() {
+  constructor () {
     super();
     this.renderProducts = this.renderProducts.bind(this);
     this.handleClickCartPopup = this.handleClickCartPopup.bind(this);
-
     this.state = {
-      showModal: false
+      showModal: false,
     };
-
+  
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+
   handleClickCartPopup(product) {
     this.props.handleRemoveFromCart(product);
   }
-
-  handleOpenModal() {
+  
+  handleOpenModal () {
     this.setState({ showModal: true });
   }
-
-  handleCloseModal() {
+  
+  handleCloseModal () {
     this.setState({ showModal: false });
   }
 
@@ -77,120 +76,47 @@ class Popup extends React.Component {
     );
   }
 
-  render() {
+  render () {
     return (
-      <div>
-        <button className="button" onClick={this.handleOpenModal}>
-        <ul>
-          {this.props.cart
-            .filter(e => e.isvisible == "true")
-            .map(this.renderProductsCondensed)}
-        </ul>
-          Gå till kassan
-        </button>
-        <ReactModal
-          isOpen={this.state.showModal}
-          contentLabel="onRequestClose Example"
-          onRequestClose={this.handleCloseModal}
-        >
-          {" "}
-          <div id="orderinfo">
-            <h1>Leveransinformation: </h1>
+      <div id="ruta">
+        <button className="checkout" onClick={this.handleOpenModal}>
+        <p id="title">Checkout</p></button>
+        <ReactModal 
+           isOpen={this.state.showModal}
+           contentLabel="onRequestClose Example"
+           onRequestClose={this.handleCloseModal}
+        > <div id="orderinfo">
+          <h1>Leveransinformation: </h1>
 
-            <form className="form" onSubmit={this.handleSubmit}>
-              <label>
-                Förnamn:{" "}
-                <input
-                  className="input"
-                  type="text"
-                  id="firstname"
-                  name="firstname"
-                />
-              </label>
-              <br />
-              <label>
-                Efternamn:{" "}
-                <input
-                  className="input"
-                  type="text"
-                  id="lastname"
-                  name="lastname"
-                />
-              </label>
-              <br />
-              <label>
-                Email:{" "}
-                <input className="input" type="text" id="email" name="email" />
-              </label>
-              <br />
-              <label>
-                Adress:{" "}
-                <input
-                  className="input"
-                  type="text"
-                  id="adress"
-                  name="adress"
-                />
-              </label>
-              <br />
-              <label>
-                Adress 2:{" "}
-                <input
-                  className="input"
-                  type="text"
-                  id="adress2"
-                  name="adress2"
-                />
-              </label>
-              <br />
-              <label>
-                Postnummer:
-                <input
-                  className="input"
-                  type="text"
-                  id="zipcode"
-                  name="zipcode"
-                />
-              </label>
-              <br />
-              <label>
-                Postort:
-                <input className="input" type="text" id="city" name="city" />
-              </label>
-              <br />
-              <label>
-                Land:
-                <input
-                  className="input"
-                  type="text"
-                  id="country"
-                  name="country"
-                />
-              </label>
-              <br />
-              <input
-                className="button"
-                type="submit"
-                value="Lägg din beställning"
-              />
-            </form>
-            <button className="button" onClick={this.handleCloseModal}>
-              Avbryt köp
-            </button>
+          <form className="form" onSubmit={this.handleSubmit}>
+            <label>Förnamn:   <input className="input" type="text" id="firstname" name="firstname" /></label><br/>
+            <label>Efternamn: <input className="input" type="text" id="lastname" name="lastname"  /></label><br/>
+            <label>Email:     <input className="input" type="text" id="email" name="email" /></label><br/>
+            <label>Adress:    <input className="input" type="text" id="adress" name="adress" /></label><br/>
+            <label>Adress 2:  <input className="input" type="text" id="adress2" name="adress2"  /></label><br/>
+            <label>Postnummer: 
+              <input className="input" type="text" id="zipcode" name="zipcode" /></label><br/>
+            <label>Postort: 
+              <input className="input" type="text" id="city" name="city" /></label><br/>
+            <label>Land: 
+              <input className="input" type="text" id="country" name="country" /></label><br/>
+            <input className="kassa" type="submit" value="Lägg din beställning"/>
+          </form>
+          <button className="kassa" onClick={this.handleCloseModal}>Avbryt köp</button>
+         
           </div>
           <div id="order">
-            <h2>Din beställning: </h2>
+            <h2>Din beställning: </h2><br/>
             <ul>
               {this.props.cart
-                .filter(e => e.isvisible == "true")
                 .map(this.renderProducts)}
             </ul>
-            <br />
           </div>
         </ReactModal>
       </div>
     );
   }
 }
+
 
 export default Popup;

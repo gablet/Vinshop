@@ -10,7 +10,12 @@ class FilterVarugruppButton extends Component {
     render() {
           return (
             <div className="filter-section">
-            <h1>Filtrera på</h1>
+            <h3 class="title">kategorier</h3>
+            <button 
+                    className="filter-button" 
+                    onClick={this.filterProducts.bind(this, "Alla viner")}> 
+                    Alla viner
+                </button>
                 <button 
                     className="filter-button" 
                     onClick={this.filterProducts.bind(this, "Rött vin")}> 
@@ -26,6 +31,7 @@ class FilterVarugruppButton extends Component {
                     onClick={this.filterProducts.bind(this, "Mousserande vin")}> 
                     Mousserande vin
                 </button>
+                
             </div>
     
           )};

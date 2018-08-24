@@ -9,7 +9,7 @@ class CheckoutItem extends Component {
       <li className="">
 
         <div id="CheckoutItem__details">
-          <div className="CheckoutItem__cat">{product.varugrupp}</div>
+          <div className="CheckoutItem__cat"></div>
           <h4>{product.namn}</h4>
           <p>
             {product.ursprung}, {product.ursprungsland}
@@ -17,7 +17,7 @@ class CheckoutItem extends Component {
           <div className="CheckoutItem__price-cart">
             <p>{product.prisinklmoms} SEK</p>
             <button onClick={this.props.handleClickCartPopup.bind(this, product)}>
-              <span className="RemoveCheckoutItem" /> Tabort
+              <span className="RemoveCheckoutItem" /> Ta bort
             </button>
           </div>
           <div className="CheckoutItem__description">{product.name}</div>

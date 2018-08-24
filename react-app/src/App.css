@@ -32,12 +32,16 @@
   flex-direction: column;  /*places the left and right headers above the bottom content*/
 }
 
+#middle {
+  min-width: 1100px;
+}
+
 #left {
-  flex-shrink: 1;
+  min-width: 220px;
     /*makes sure that content is not cut off in a smaller browser window*/
 }
 
-.top-left {
+#top-left {
   flex-shrink: 0  ;
   display: inline-flex;
   background-color: lightblue;
@@ -47,7 +51,7 @@
   display: flex;
 }
 
-.top-right {
+#top-right {
   flex-shrink: 0  ;
   display: inline-flex;
   background-color: lightblue;
@@ -58,7 +62,7 @@
   display: flex;
 }
 
-.top-middle {
+#top-middle {
   flex-shrink: 0;
   display: inline-flex;
   background-color: lightblue;
@@ -74,8 +78,7 @@
 }
 
 .set-height {
-  height: 120px;
-
+  min-height: 120px;
 }
 
 .set-width {
@@ -115,24 +118,23 @@ button {
   transition: 0.3s;
   text-decoration: none;
   cursor: pointer;
-  border-radius: 10;
+  border-radius: 25;
+  size: 20px;
 }
 
 #dropmenu {
-  border-radius: 25px;
-  background-color: #00308F;
+  border-radius: 25px; 
   border: none;
-  color: white;
+  border-radius: 10px;
   padding: 16px 32px;
   text-align: center;
   font-size: 16px;
+  margin-top: 200px;
   margin: 20px;
-  opacity: 0.6;
   transition: 0.3s;
   display: inline-block;
   text-decoration: none;
   cursor: pointer;
-  box-shadow:  0 4px 8px 0 #ccc, 0 6px 20px 0 #ccc;
 }
 
 #search{
@@ -140,14 +142,32 @@ button {
   max-width: 50%;
   height: 2em;
   border-radius: 4px;
+  padding: auto;
+  margin: auto;
+  display: block;
+}
 
+#title {
+  
+  float: center;
 }
 .top-middle{
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+  
+}
+
+.content {
+  height: 30px;
+  
+}
+
+#bild {
+  max-width: 20px;
+  display: inline;
 }
   
+
 
 

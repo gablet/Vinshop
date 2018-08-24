@@ -10,7 +10,7 @@ class SortButton extends React.Component {
   render() {
     return (
       <div className="sort-section">
-        <h1>Sortera efter:</h1>
+        <h3 class="title">sortera</h3>
         <button
           className="sort-button"
           onClick={this.sortProducts.bind(this, "prisinklmoms")}
