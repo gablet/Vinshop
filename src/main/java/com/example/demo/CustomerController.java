@@ -16,7 +16,6 @@ public class CustomerController {
     @Autowired
     private CustomerRepository repository;
 
-
     @PostMapping(value = "/createcustomer", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void createCustomer(@RequestBody Customer customer, HttpServletResponse response) {
         response.setHeader("Access-Control-Allow-Origin", "*");

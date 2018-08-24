@@ -26,7 +26,6 @@ public class Customer {
 
     }
 
-
     public int getCustomerid() {
         return customerid;
     }
