@@ -23,8 +23,6 @@ public class CustomerController {
 
 
         System.out.println(customer);
-
-
-        //repository.save(customer);
+        repository.save(customer);
     }
 }

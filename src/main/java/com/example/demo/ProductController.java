@@ -27,19 +27,6 @@ public class ProductController {
             return products = repository.findAll();
     }
 
-/*    @CrossOrigin(origins = "http://localhost:3000")
-    @PostMapping(value = "/createorder", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void createOrder(@RequestBody ArrayList<Product> products, HttpServletResponse response) {
-        response.setHeader("Access-Control-Allow-Origin", "*");
-
-        //System.out.println(products.);
-
-
-        //repository.save(products);
-
-        //repository.save(order);
-        //System.out.println(order.getArtikelnr());
-    }*/
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(value = "/createorder", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -47,15 +34,16 @@ public class ProductController {
         response.setHeader("Access-Control-Allow-Origin", "*");
 
         System.out.println(products.get(0).getArtikelnr());
+        System.out.println(products.get(1).getArtikelnr());
+
+        for (Product product:products) {
+            product.setLagersaldo(product.getLagersaldo()-1);
+            repository.save(product);
+        }
 
 
-        //System.out.println(products.);
 
 
-        //repository.save(products);
-
-        //repository.save(order);
-        //System.out.println(order.getArtikelnr());
     }
 
 
