@@ -30,7 +30,7 @@ class Product extends Component {
           <div className="BootItem__description">{product.name}</div>
           <div
             className="Product__stock"
-            style={{ color: product.id >= 5 ? "#417505" : "#CE0814" }}
+            style={{ color: product.lagersaldo >= 5 ? "#417505" : "#CE0814" }}
           >
             {product.lagersaldo} i lager.
           </div>
