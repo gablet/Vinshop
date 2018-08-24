@@ -19,17 +19,17 @@ class FilterVarugruppButton extends Component {
                 <button 
                     className="filter-button" 
                     onClick={this.filterProducts.bind(this, "Rött vin")}> 
-                    Rött vin
+                    Rött
                 </button>
                 <button 
                     className="filter-button" 
                     onClick={this.filterProducts.bind(this, "Vitt vin")}> 
-                    Vitt vin
+                    Vitt
                 </button>
                 <button 
                     className="filter-button" 
                     onClick={this.filterProducts.bind(this, "Mousserande vin")}> 
-                    Mousserande vin
+                    Mousserande
                 </button>
                 
             </div>

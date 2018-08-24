@@ -126,7 +126,7 @@ class App extends Component {
         <div className="wrapper">
           <div id="left" className="column">
             <div id="top-left" className="set-height">
-              <img src={logo} className="App-logo" alt="logo" />
+              <h1 id="site-title">vinshoppen</h1>
             </div>
 
             <div id="leftcolumn" className="bottom">
@@ -146,7 +146,7 @@ class App extends Component {
           <div id="middle" className="column">
             <div id="top-middle" className="set-height">
               <input
-                id="search"
+                id="search" placeholder=" Sök"
                 type="text"
                 value={this.state.search}
                 onChange={this.updateSearch.bind(this)}

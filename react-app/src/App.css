@@ -168,6 +168,11 @@ button {
   display: inline;
 }
   
+#site-title {
+  margin-right: 0px;
+  margin: auto;
+  font-family: 'Gabriela', serif;
+}
 
 
 

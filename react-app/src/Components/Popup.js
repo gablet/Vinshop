@@ -61,8 +61,8 @@ class Popup extends React.Component {
     Axios.post(url, 
       cart,
     );
-    const element = (<h3>Tack för din beställning! Den levereras inom en timme tillsammans med faktura.</h3>);
-    ReactDOM.render(element, document.getElementById("orderinfo")); 
+    const element = (<h3>Tack för din beställning! <br/>Den levereras inom en timme tillsammans med faktura.</h3>);
+    ReactDOM.render(element, document.getElementById("wrapper")); 
   }
 
   renderProducts(product) {
@@ -79,38 +79,42 @@ class Popup extends React.Component {
   render () {
     return (
       <div id="ruta">
-        <button className="checkout" onClick={this.handleOpenModal}>
-        <p id="title">Checkout</p></button>
-        <ReactModal 
+        <button className="checkout" value="Checkout" onClick={this.handleOpenModal}>
+        <p id="title">Checkout</p>
+        </button>
+        <ReactModal id="ruta"
+           dialogClassName="test"
            isOpen={this.state.showModal}
            contentLabel="onRequestClose Example"
            onRequestClose={this.handleCloseModal}
-        > <div id="orderinfo">
-          <h1>Leveransinformation: </h1>
+          > 
+          <div id="wrapper">
+          <div id="orderinfo">
+            <h1>Leveransinformation: </h1>
 
-          <form className="form" onSubmit={this.handleSubmit}>
-            <label>Förnamn:   <input className="input" type="text" id="firstname" name="firstname" /></label><br/>
+            <form className="form" onSubmit={this.handleSubmit}>
+            <label>Förnamn:   <input className="input" type="text" id="firstname" name="firstname" /></label>
             <label>Efternamn: <input className="input" type="text" id="lastname" name="lastname"  /></label><br/>
-            <label>Email:     <input className="input" type="text" id="email" name="email" /></label><br/>
+            <label>Email:     <input className="input" type="text" id="email" name="email" /></label>
             <label>Adress:    <input className="input" type="text" id="adress" name="adress" /></label><br/>
-            <label>Adress 2:  <input className="input" type="text" id="adress2" name="adress2"  /></label><br/>
+            <label>Adress 2:  <input className="input" type="text" id="adress2" name="adress2"  /></label>
             <label>Postnummer: 
               <input className="input" type="text" id="zipcode" name="zipcode" /></label><br/>
             <label>Postort: 
-              <input className="input" type="text" id="city" name="city" /></label><br/>
+              <input className="input" type="text" id="city" name="city" /></label>
             <label>Land: 
               <input className="input" type="text" id="country" name="country" /></label><br/>
             <input className="kassa" type="submit" value="Lägg din beställning"/>
-          </form>
-          <button className="kassa" onClick={this.handleCloseModal}>Avbryt köp</button>
-         
-          </div>
+            </form>
+            <button className="kassa" onClick={this.handleCloseModal}>Avbryt köp</button>
+          </div> 
           <div id="order">
             <h2>Din beställning: </h2><br/>
             <ul>
               {this.props.cart
                 .map(this.renderProducts)}
             </ul>
+          </div>
           </div>
         </ReactModal>
       </div>
