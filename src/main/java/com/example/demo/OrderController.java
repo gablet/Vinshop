@@ -1,4 +1,5 @@
-/*package com.example.demo;
+/*
+package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,6 +18,7 @@ public class OrderController {
     private OrderRepository repository;
 
 
+
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(value = "/createorder", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void createOrder(@RequestBody Order order, HttpServletResponse response) {
@@ -27,17 +29,6 @@ public class OrderController {
         //repository.save(order);
         //System.out.println(order.getArtikelnr());
     }
-    
 
-    *//**@CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping(value = "/createorder", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Customer> getOrder(HttpServletResponse response, HttpServletRequest request) {
-        response.setHeader("Access-Control-Allow-Origin", "*");
-
-        return null;
-    }*//*
-
-
-
-
-}*/
+}
+*/

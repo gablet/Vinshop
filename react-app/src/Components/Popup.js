@@ -9,6 +9,7 @@ import CheckoutItem from "./CheckoutItem";
 import CheckoutItemCondensed from "./CheckoutItemCondensed";
 
 
+
 class Popup extends React.Component {
   constructor() {
     super();
@@ -53,6 +54,7 @@ class Popup extends React.Component {
     console.log(cart);
     console.log(customer);
     console.log(result);
+<<<<<<< HEAD
     const url = "http://localhost:8090/createorder";
     const url2 = "http://localhost:8090/createcustomer";
     Axios.post(url2, {
@@ -68,6 +70,18 @@ class Popup extends React.Component {
       </h3>
     );
     ReactDOM.render(element, document.getElementById("orderinfo"));
+=======
+    const url = 'http://localhost:8090/createorder';
+    const url2 = 'http://localhost:8090/createcustomer';
+    Axios.post(url2,
+      customer,
+    );
+    Axios.post(url, 
+      cart,
+    );
+    const element = (<h3>Tack för din beställning! Den levereras inom en timme tillsammans med faktura.</h3>);
+    ReactDOM.render(element, document.getElementById("orderinfo")); 
+>>>>>>> 67ca35722b61a5bad4253db34f464b1b74dcedaa
   }
 
   renderProducts(product) {

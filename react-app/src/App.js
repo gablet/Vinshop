@@ -13,7 +13,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showMenu: false,
+      showMenu: true,
       products: [],
       cart: [],
       search: ""
@@ -164,10 +164,15 @@ class App extends Component {
           <div id="right" className="column">
             <div className="top-right">
               <div className="set-height">
-                <div
+                
+              </div>
+            </div>
+
+            <div className="bottom">
+              <div className="set-width" />
+              <div
                   id="dropmenu"
-                  onMouseOver={this.showMenu}
-                  onMouseLeave={this.dontShowMenu}
+                  
                 >
                   <img src={shop} alt="shop" />
                   <Navigation
@@ -185,11 +190,6 @@ class App extends Component {
                     </div>
                   ) : null}
                 </div>
-              </div>
-            </div>
-
-            <div className="bottom">
-              <div className="set-width" />
             </div>
           </div>
         </div>
