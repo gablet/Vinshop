@@ -11,7 +11,7 @@ class Product extends Component {
     return (
       <div className="Product">
         <div id="Product__img">
-          <img className="images" src={bottle} alt="Product Item" />
+          <img className="images" src={product.produktbild} alt={bottle} />
         </div>
         <div id="Product__details">
           <div className="Product__cat">{product.varugrupp}</div>

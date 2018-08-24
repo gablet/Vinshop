@@ -84,7 +84,7 @@
 }
 
 .leftcolumn {
-  width: 50%;
+  max-width: 50%;
   padding: auto;
   margin: 10px;
 }
